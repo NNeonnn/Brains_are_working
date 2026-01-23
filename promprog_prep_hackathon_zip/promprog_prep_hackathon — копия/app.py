@@ -58,7 +58,7 @@ def login():
             return response
         else:
             pass
-    return render_template('login.html', **commonkwargs(email))
+    return render_template('login.html', **commonkwargs(getlogin(request.cookies)))
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
@@ -73,7 +73,7 @@ def register():
         response = make_response(redirect(url_for('profile'), 302))
         response.set_cookie('account', email)
         return response
-    return render_template('register.html', **commonkwargs(email))
+    return render_template('register.html', **commonkwargs(getlogin(request.cookies)))
 
 @app.route('/profile', methods=["GET", "POST"])
 def profile():
@@ -105,7 +105,7 @@ def profile():
                 if (photo.filename != ''):
                     path = f"{base_path}/static/images/users/{email}.jpg"
                     photo.save(path)
-    return render_template('profile.html', **commonkwargs(email))
+    return render_template('profile.html', **commonkwargs(getlogin(request.cookies)))
 
 #start
 if __name__ == '__main__':
