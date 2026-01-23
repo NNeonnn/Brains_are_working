@@ -82,7 +82,7 @@ def register():
         return redirect(url_for('profile'), 302)
     if (request.method == 'POST'):
         data = request.form.to_dict(flat=False)
-        users_base[data['email'][0]] = [data['password'][0], data['name'][0], "empty", "N/A"]
+        users_base[data['email'][0]] = [data['password'][0], data['name'][0], "empty", "N/A", int(data['rights'][0])]
         with open(f"{base_path}/users_base.json", 'w', encoding='utf-8') as f:
             f.write(json.dumps(users_base, indent=4))
         email = data['email'][0]
