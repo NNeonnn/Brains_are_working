@@ -23,9 +23,15 @@ def return_image(path, placeholder):
 
 def commonkwargs():
     if (email in users_base):
-        return {'username': users_base[email][1], 'userimg': return_image(f'users/{email}', 'user_placeholder'), 'desc': users_base[email][2], 'phone': users_base[email][3]}
+        ans = dict()
+        ans['userimg'] = return_image(f'users/{email}', 'user_placeholder')
+        for u in users_base[email]:
+            if (u != 'password'):
+                ans[u] = users_base[email][u]
+        return ans
     else:
-        return {'username': 'Log in', 'userimg': return_image(f'users/{email}', 'user_placeholder'), 'desc': 'empty', 'phone': 'N/A'}
+        return {'username': 'Log in', 'userimg': return_image(f'users/{email}', 'user_placeholder'), \
+            'description': 'empty', 'phone': 'N/A', 'rights': 0, 'money': 0}
 
 #basic routes
 @app.route('/')
@@ -68,7 +74,7 @@ def login():
     if (request.method == 'POST'):
         data = request.form.to_dict(flat=False)
         input_email = data['email'][0]
-        if len(data['email']) > 0 and data['email'][0] in users_base and data['password'][0] == users_base[input_email][0]:
+        if len(data['email']) > 0 and data['email'][0] in users_base and data['password'][0] == users_base[input_email]['password']:
             email = input_email
             return redirect(url_for('profile'), 302)
         else:
@@ -82,7 +88,8 @@ def register():
         return redirect(url_for('profile'), 302)
     if (request.method == 'POST'):
         data = request.form.to_dict(flat=False)
-        users_base[data['email'][0]] = [data['password'][0], data['name'][0], "empty", "N/A", int(data['rights'][0])]
+        users_base[data['email'][0]] = {'password': data['password'][0], 'username': data['name'][0], 'description': "empty", \
+            'phone': "N/A", 'rights': int(data['rights'][0]), 'money': 0}
         with open(f"{base_path}/users_base.json", 'w', encoding='utf-8') as f:
             f.write(json.dumps(users_base, indent=4))
         email = data['email'][0]
@@ -101,11 +108,11 @@ def profile():
             return redirect(url_for('landing'), 302)
         if (data['commit_type'][0] == 'update_data'):
             if (len(data['name']) > 0):
-                users_base[email][1] = data['name'][0]
+                users_base[email]['username'] = data['name'][0]
             if (len(data['phone']) > 0):
-                users_base[email][3] = data['phone'][0]
-            if (len(data['desc']) > 0):
-                users_base[email][2] = data['desc'][0]
+                users_base[email]['phone'] = data['phone'][0]
+            if (len(data['description']) > 0):
+                users_base[email]['description'] = data['description'][0]
             with open(f"{base_path}/users_base.json", 'w', encoding='utf-8') as f:
                 f.write(json.dumps(users_base, indent=4))
         if (data['commit_type'][0] == 'update_photo'):
