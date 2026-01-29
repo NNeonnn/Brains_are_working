@@ -4,6 +4,7 @@ from flask import render_template, request, redirect, url_for, send_file, sessio
 from subscript.filework import *
 from subscript.account_system import *
 from datetime import datetime
+import pytz
 
 def get_cart_objects(email):
     user = getuser(email)
@@ -76,13 +77,19 @@ def buy_from_cart():
     names = []
     for i in user['cart']:
         names.append(tovarlist[i]['name'])
+
+    # Получаем московское время с правильным форматированием
+    moscow_tz = pytz.timezone('Europe/Moscow')
+    moscow_time = datetime.now(moscow_tz)
+    time_str = f"{moscow_time.hour:02d}:{moscow_time.minute:02d}"
+
     qu = getquerylist("student_to_povar.json")
     qu.append({
         "id": nowid,
         "products": names,
         "name": user['username'],
         "userid": email,
-        "time": f'{datetime.now().hour}:{datetime.now().minute}'
+        "time": time_str  # Используем отформатированное время
     })
     setquerylist(name="student_to_povar.json", to=qu)
     setuser(email, user)
