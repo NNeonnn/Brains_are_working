@@ -22,6 +22,14 @@ def sendfood(id):
             for j in older:
                 if j['id'] != id:
                     newer.append(j)
+            history = getquerylist("data.json")
+
+            # Если файл не найден или вернулась ошибка (bool), создаем пустой список
+            if not isinstance(history, list):
+                history = []
+
+            history.append(i)
+            setquerylist(name="data.json", to=history)
             setquerylist(name="student_to_povar.json", to=newer)
             setuser(thatmail, user)
             return redirect(url_for('dashboard'))
