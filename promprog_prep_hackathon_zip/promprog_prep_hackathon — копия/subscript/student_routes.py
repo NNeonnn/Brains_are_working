@@ -46,7 +46,12 @@ def add_to_cart(id):
     user = getuser(email)
     if 'cart' not in user:
         user['cart'] = []
-    user['cart'].append(str(id))
+    for i in range(len(user['cart'])):
+        if (user['cart'][i][0] == str(id)):
+            user['cart'][i][1] += 1
+            setuser(email, user)
+            return redirect(url_for('dashboard'))
+    user['cart'].append([str(id), 1])
     setuser(email, user)
     return redirect(url_for('dashboard'))
 
