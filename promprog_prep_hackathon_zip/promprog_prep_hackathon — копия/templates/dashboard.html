@@ -97,25 +97,23 @@
                             <span class="filter-group-title">КАТЕГОРИИ</span>
                             <div class="d-flex flex-column gap-2">
                                 <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Второе горячее блюдо" checked id="c1"><label class="form-check-label cursor-pointer"
-                                        for="c1">Второе горячее блюдо</label></div>
+                                        value="Первое" checked id="c1"><label class="form-check-label cursor-pointer"
+                                        for="c1">Первое</label></div>
                                 <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Гарнир" checked id="c2"><label class="form-check-label cursor-pointer"
-                                        for="c2">Гарнир</label></div>
+                                        value="Второе" checked id="c2"><label class="form-check-label cursor-pointer"
+                                        for="c2">Второе</label></div>
                                 <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Готовое кулинарное блюдо" checked id="c3"><label class="form-check-label cursor-pointer"
-                                        for="c3">Готовое кулинарное блюдо</label></div>
+                                        value="Напитки" checked id="c3"><label class="form-check-label cursor-pointer"
+                                        for="c3">Напитки</label></div>
                                 <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Напиток" checked id="c4"><label class="form-check-label cursor-pointer"
-                                        for="c4">Напиток</label></div>
+                                        value="Салаты" checked id="c4"><label class="form-check-label cursor-pointer"
+                                        for="c4">Салаты</label></div>
                                 <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Салат" checked id="c5"><label class="form-check-label cursor-pointer"
-                                        for="c5">Салат</label></div>
+                                        value="Фрукты" checked id="c5"><label class="form-check-label cursor-pointer"
+                                        for="c5">Фрукты</label></div>
                                 <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Суп" checked id="c6"><label class="form-check-label cursor-pointer"
-                                        for="c6">Суп</label></div>
-                                <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox" value="Хлеб" checked id="c7"><label class="form-check-label cursor-pointer"
-                                                                                                  for="c7">Хлеб</label></div>
+                                        value="Выпечка" checked id="c6"><label class="form-check-label cursor-pointer"
+                                        for="c6">Выпечка</label></div>
                             </div>
                         </div>
 
@@ -169,7 +167,7 @@
                         </div>
 
                         <div class="d-grid gap-2">
-                            <a href="{{ url_for('pay') }}"
+                            <a href="{{ url_for('buy_from_cart') }}"
                                 class="btn btn-success btn-sm rounded-pill">Оплатить</button>
                                 <a href="{{ url_for('clear_cart') }}"
                                     class="btn btn-light border btn-sm rounded-pill text-danger">Очистить</a>
@@ -191,7 +189,6 @@
         <!-- СЕТКА ТОВАРОВ (СПРАВА) -->
         <div class="col-lg-9">
             <div class="row g-4" id="productsGrid">
-
                 {% if tovarlist %}
                 {% for id, item in tovarlist.items() %}
 
@@ -220,6 +217,7 @@
                                 }}</span>
                         </div>
                         {% endif %}
+
                         <a href="{{ url_for('product_detail', id=id) }}" class="text-decoration-none text-dark">
                             <div class="product-img-wrapper d-flex align-items-center justify-content-center bg-light"
                                 style="height: 180px;">
@@ -727,6 +725,7 @@
                 items.forEach(item => {
                     const itemCategory = item.getAttribute('data-category');
                     const isDangerous = item.getAttribute('data-allergen') === 'true';
+
                     const matchCategory = activeCategories.includes(itemCategory);
                     const matchAllergy = (allergySwitch && allergySwitch.checked) ? !isDangerous : true;
 
