@@ -69,6 +69,8 @@ def dashboard():
     if (kwargs['rights'] == 0):
         return render_template('dashboard.html', tovarlist=gettovarlist(), **kwargs)
     elif (kwargs['rights'] == 1):
+        print(gettovarlist())
+
         cart_items, cart_total = student_r.get_cart_objects(email)
         kwargs['cart_items'] = cart_items
         kwargs['cart_total'] = cart_total

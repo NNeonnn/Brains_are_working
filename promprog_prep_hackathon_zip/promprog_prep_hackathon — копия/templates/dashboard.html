@@ -191,6 +191,7 @@
         <!-- СЕТКА ТОВАРОВ (СПРАВА) -->
         <div class="col-lg-9">
             <div class="row g-4" id="productsGrid">
+
                 {% if tovarlist %}
                 {% for id, item in tovarlist.items() %}
 
@@ -199,6 +200,7 @@
                 {% for prod_allergen in item.allergens %}
                 {% if prod_allergen in allergies %}
                 {% set ns.is_dangerous = true %}
+                {{ns.is_dangerous}}
                 {% set ns.danger_reason = prod_allergen %}
                 {% endif %}
                 {% endfor %}

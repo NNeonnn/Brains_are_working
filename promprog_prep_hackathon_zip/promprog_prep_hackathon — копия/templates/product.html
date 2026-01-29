@@ -24,6 +24,7 @@
             <h1 class="fw-bold">{{ product.name }}</h1>
             <h2 class="text-primary fw-bold mb-3">{{ product.price }} ₽</h2>
             <p class="lead text-secondary">{{ product.description }}</p>
+            <p class="lead text-secondary">Количество: {{ product.weight }} г</p>
 
             {% if rights == 1 %}
             <a class="btn btn-primary-custom btn-pill px-5 py-3 shadow-sm" href="{{ url_for('add_to_cart', id=id) }}">Добавить в заказ</a>

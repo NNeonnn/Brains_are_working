@@ -47,7 +47,9 @@ def settovar(id, to):
         f.write(json.dumps(to, indent = 4))
 
 def gettovar(id):
-    tovars_path = f"{base_path}/tovars/{id}.json"
+    tovars_path = f"{base_path}/tovars/tovars.json"
+    with open(tovars_path, 'r', encoding='utf-8') as f:
+        return json.loads(f.read())[id]
     if os.path.exists(tovars_path):
         with open(tovars_path, 'r', encoding='utf-8') as f:
             return json.loads(f.read())
@@ -66,5 +68,6 @@ def getquerylist(name):
     return False
 
 def gettovarlist():
+
     with open(f"{base_path}/tovars/tovars.json", 'r', encoding='utf-8') as f:
         return json.loads(f.read())

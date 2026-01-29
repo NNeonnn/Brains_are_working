@@ -4,14 +4,8 @@
     "description": "empty",
     "phone": "N/A",
     "rights": 1,
-    "money": 1201,
+    "money": 976,
     "allergies": [],
-    "cart": [
-        "1"
-    ],
-    "cart": [
-        "1",
-        "1"
-    ],
+    "cart": [],
     "to_take": []
 }
