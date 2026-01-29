@@ -54,7 +54,7 @@ app.add_url_rule('/buy_to_admin', view_func=povar_r.buy_to_admin, methods=['POST
 app.add_url_rule('/set_admin_query', view_func=admin_r.set_admin_query, methods=['POST'])
 
 @app.errorhandler(404)
-def four04():
+def four04(error):
     return render_template('404.html', **commonkwargs(getlogin(reset_auth=False)))
 
 #@app.errorhandler(Exception)
