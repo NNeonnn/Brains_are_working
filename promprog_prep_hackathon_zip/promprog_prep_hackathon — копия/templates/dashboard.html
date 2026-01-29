@@ -115,7 +115,7 @@
                                         value="Суп" checked id="c6"><label class="form-check-label cursor-pointer"
                                         for="c6">Суп</label></div>
                                 <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox" value="Хлеб" checked id="c7"><label class="form-check-label cursor-pointer"
-                                                                                                  for="c6">Хлеб</label></div>
+                                                                                                  for="c7">Хлеб</label></div>
                             </div>
                         </div>
 
@@ -200,7 +200,6 @@
                 {% for prod_allergen in item.allergens %}
                 {% if prod_allergen in allergies %}
                 {% set ns.is_dangerous = true %}
-                {{ns.is_dangerous}}
                 {% set ns.danger_reason = prod_allergen %}
                 {% endif %}
                 {% endfor %}
@@ -221,7 +220,6 @@
                                 }}</span>
                         </div>
                         {% endif %}
-
                         <a href="{{ url_for('product_detail', id=id) }}" class="text-decoration-none text-dark">
                             <div class="product-img-wrapper d-flex align-items-center justify-content-center bg-light"
                                 style="height: 180px;">
@@ -729,7 +727,6 @@
                 items.forEach(item => {
                     const itemCategory = item.getAttribute('data-category');
                     const isDangerous = item.getAttribute('data-allergen') === 'true';
-
                     const matchCategory = activeCategories.includes(itemCategory);
                     const matchAllergy = (allergySwitch && allergySwitch.checked) ? !isDangerous : true;
 
