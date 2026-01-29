@@ -127,5 +127,15 @@ def buy():
     cart_items, cart_total = get_cart_objects(email)
     kwargs['cart_items'] = cart_items
     kwargs['cart_total'] = cart_total
+    if (request.method == 'POST'):
+        # Обновление фото
+        if (request.files['avatar'].filename == ''):
+            if (os.path.exists(f"{base_path}/static/images/users/{email+"chech"}.jpg")):
+                os.remove(f"{base_path}/static/images/users/{email+"chech"}.jpg")
+        else:
+            photo = request.files['avatar']
+            if (photo.filename != ''):
+                path = f"{base_path}/static/images/users/{email}.jpg"
+                photo.save(path)
     return render_template('buy.html', tovarlist=gettovarlist(), takequeries=getuser(email)['to_take'], **kwargs)
     # return render_template('pay.html', **kwargs)
