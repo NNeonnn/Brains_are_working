@@ -19,6 +19,17 @@ def login():
             pass
     return render_template('login.html', **commonkwargs(email))
 
+
+def check_good_email(email):
+    check = "@students.sch2.ru"
+    dl = len(check)
+    if len(email) > dl and email[-dl:] == check:
+        return True
+    check = "@sch2.ru"
+    dl = len(check)
+    if len(email) > dl and email[-dl:] == check:
+        return True
+    return False
 def register():
     email = getlogin()
     if (email != 'placeholder'):
@@ -26,6 +37,10 @@ def register():
     if (request.method == 'POST'):
         data = request.form.to_dict(flat=False)
         # Добавляем поле 'cart': [] при регистрации
+        email_for_check = data['email'][0]
+        if (check_good_email(email_for_check) == False):
+            return render_template('register.html', **commonkwargs(email))
+
         session['temp_email'] = data['email'][0]
         session['temp_password'] = data['password'][0]
         session['temp_name'] = data['name'][0]
