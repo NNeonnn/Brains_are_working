@@ -44,4 +44,4 @@ def send_global_file():
             if (txt.filename != ''):
                 path = f"{base_path}/tovars/global_menu.txt"
                 txt.save(path)
-    return render_template('send_global.html', **commonkwargs(email))
+    return render_template('send_global.html', tovarlist=gettovarlist(), **commonkwargs(email))
