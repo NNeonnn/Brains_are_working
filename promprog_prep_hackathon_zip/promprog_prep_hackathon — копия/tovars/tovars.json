@@ -1,7 +1,7 @@
 {
   "1": {
     "name": "Борщ Московский",
-    "category": "Первое",
+    "category": "Суп",
     "price": 85,
     "badge": "Хит продаж",
     "color": "rgb(220, 53, 69)",
@@ -10,16 +10,16 @@
   },
   "2": {
     "name": "Котлета Пожарская",
-    "category": "Второе",
+    "category": "Второе горячее блюдо",
     "price": 120,
     "badge": "Свежее",
     "color": "rgb(25, 135, 84)",
     "main_icon": "bi-egg-fried",
-    "allergens": ["Глютен", "Лактоза"]
+    "allergens": []
   },
   "3": {
     "name": "Компот Вишневый",
-    "category": "Напитки",
+    "category": "Напиток",
     "price": 35,
     "badge": "",
     "color": "rgb(13, 110, 253)",
@@ -28,7 +28,7 @@
   },
   "4": {
     "name": "Салат Витаминный",
-    "category": "Салаты",
+    "category": "Салат",
     "price": 55,
     "badge": "Веган",
     "color": "rgb(25, 135, 84)",
@@ -37,38 +37,38 @@
   },
   "5": {
     "name": "Рыба запеченная",
-    "category": "Второе",
+    "category": "Второе горячее блюдо",
     "price": 140,
     "badge": "Омега-3",
     "color": "rgb(13, 202, 240)",
     "main_icon": "bi-water",
-    "allergens": ["Рыба"]
+    "allergens": []
   },
   "6": {
     "name": "Творожная запеканка",
-    "category": "Второе",
+    "category": "Готовое кулинарное блюдо",
     "price": 95,
     "badge": "Завтрак",
     "color": "rgb(255, 193, 7)",
     "main_icon": "bi-circle-square",
-    "allergens": ["Лактоза", "Глютен"]
+    "allergens": []
   },
   "7": {
-    "name": "Апельсин",
-    "category": "Фрукты",
+    "name": "Хлеб чёрный",
+    "category": "Хлеб",
     "price": 40,
-    "badge": "Витамин C",
-    "color": "rgb(253, 126, 20)",
+    "badge": "",
+    "color": "rgb(0, 0, 0)",
     "main_icon": "bi-sun",
-    "allergens": ["Цитрусовые"]
+    "allergens": []
   },
   "8": {
     "name": "Пирожок с яблоком",
-    "category": "Выпечка",
+    "category": "Гарнир",
     "price": 45,
     "badge": "Сладкое",
     "color": "rgb(139, 69, 19)",
     "main_icon": "bi-star-fill",
-    "allergens": ["Глютен", "Орехи"]
+    "allergens": []
   }
 }

@@ -10,5 +10,6 @@
   "allergens": ["Лактоза", "Глютен"],
   "gallery": ["bi-circle-square", "bi-emoji-smile"],
   "specs": {"Калории": "220 ккал", "Белки": "14 г", "Лактоза": "Да"},
+  "weight" : 100,
   "reviews": []
 }
