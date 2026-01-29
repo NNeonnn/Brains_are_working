@@ -40,6 +40,7 @@ app.add_url_rule('/profile', view_func=account_r.profile, methods=['GET', 'POST'
 #student_routes.py
 app.add_url_rule("/got_food/<id>", view_func=student_r.gotfood, methods=['POST'])
 app.add_url_rule('/add_to_cart/<id>', view_func=student_r.add_to_cart)
+app.add_url_rule('/pay', view_func=student_r.pay)
 app.add_url_rule('/clear_cart', view_func=student_r.clear_cart)
 app.add_url_rule('/buy_from_cart', view_func=student_r.buy_from_cart)
 app.add_url_rule('/payment', view_func=student_r.payment, methods=['GET', 'POST'])
