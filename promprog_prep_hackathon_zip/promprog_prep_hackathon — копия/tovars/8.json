@@ -10,5 +10,7 @@
   "allergens": ["Глютен", "Орехи"],
   "gallery": ["bi-star-fill", "bi-heart"],
   "specs": {"Калории": "280 ккал", "Мука": "Пшеничная"},
+  "weight" : 100,
+
   "reviews": []
 }
