@@ -6,14 +6,14 @@
     <div class="container text-center">
         <!-- Анимированная иконка или большой текст -->
         <div class="mb-4">
-            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-2 mb-3">
-                Error 404
+            <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-2 mb-3" style="font-size: 1.2rem;">
+                Ошибка 404 :(
             </span>
             <h1 class="display-title display-1 fw-bold mb-3">
-                Oops! <span class="text-gradient">Lost</span> in Space?
+                Оой! Вы <span class="text-gradient">потерялись</span>?
             </h1>
             <p class="text-secondary lead mb-5 mx-auto" style="max-width: 600px;">
-                The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+                Страница, на которую вы перешли богла быть удалена или переименована.
             </p>
         </div>
 
@@ -24,18 +24,18 @@
                     <div class="mb-4 text-primary">
                         <i class="bi bi-exclamation-triangle" style="font-size: 4rem;"></i>
                     </div>
-                    <h5 class="fw-bold mb-3">What happened?</h5>
+                    <h5 class="fw-bold mb-3">Что произошло?</h5>
                     <ul class="list-unstyled text-start mb-4">
-                        <li class="mb-2 small text-muted"><i class="bi bi-dot text-primary"></i> Broken link</li>
-                        <li class="mb-2 small text-muted"><i class="bi bi-dot text-primary"></i> Typing error</li>
-                        <li class="mb-2 small text-muted"><i class="bi bi-dot text-primary"></i> Deleted content</li>
+                        <li class="mb-2 small text-muted"><i class="bi bi-dot text-primary"></i> Неверная ссылка</li>
+                        <li class="mb-2 small text-muted"><i class="bi bi-dot text-primary"></i> Опечатка</li>
+                        <li class="mb-2 small text-muted"><i class="bi bi-dot text-primary"></i> Удаленный контент</li>
                     </ul>
                     <div class="d-grid gap-2">
                         <a href="{{ url_for('landing') }}" class="btn btn-primary-custom btn-pill py-2 fw-bold">
-                            Return Home
+                            На главную
                         </a>
                         <a href="javascript:history.back()" class="btn btn-white border btn-pill py-2 fw-bold">
-                            Go Back
+                            Вернуться на прошлую страницу
                         </a>
                     </div>
                 </div>
