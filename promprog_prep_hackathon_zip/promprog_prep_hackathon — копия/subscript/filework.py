@@ -71,3 +71,24 @@ def gettovarlist():
 
     with open(f"{base_path}/tovars/tovars.json", 'r', encoding='utf-8') as f:
         return json.loads(f.read())
+
+def parse_menu_txt(path):
+    jason = {}
+    last = "hohoho"
+    with open(f'{path}/Меню.txt', 'r', encoding='utf-8') as f:
+        arr = f.read().split('\n')
+        i = 6
+        id = 1
+        while (i < len(arr) - 1):
+            if (arr[i + 3][-1] != '₽'):
+                jason[arr[i]] = []
+                last = arr[i]
+            i += 1
+            jason[i] = ({"name": arr[i], "category": last, "price": int(arr[i + 3][0:-1]), \
+                        "weight": int(arr[i + 2][0:-3]), "description": arr[i + 1], "badge": "ниче", \
+                        "old_price": 0, "badge": "гойда", "main_icon": "bi-cup-straw", \
+                        "specs": {"Калорийность": "45 ккал", "Сарах": "5 г", "Объём": "200 мл", "Температура": "Холодный"},
+                        "reviews": [], "gallery": ["bi-cup-straw"]})
+        i += 4
+        id += 1
+    return jason
