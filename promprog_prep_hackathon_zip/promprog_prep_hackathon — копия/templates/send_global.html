@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Мой Профиль{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+
+    <!-- Header -->
+    <div class="mb-5">
+        <h1 class="fw-bold mb-1">Отправить глобальное меню</h1>
+        <p class="text-secondary">Отправить глабольное меню</p>
+    </div>
+
+    <div class="row g-5">
+
+        <!-- MAIN CONTENT -->
+        <div class="col-lg-9">
+
+            <!-- 1. Аватарка -->
+            <form id="avatar-form" action="{{ url_for('send_global') }}" method="POST" enctype="multipart/form-data">
+                <input name="commit_type" type="text" value="update_photo" hidden>
+                <div class="card card-hover p-4 border-0 mb-4 shadow-sm">
+                    <h5 class="fw-bold mb-4">Отправить глобальное меню</h5>
+                    <div class="d-flex align-items-center gap-4">
+                        <div>
+                            <input type="file" id="fileInput" name="global_menu" accept=".txt" style="display: none;">
+                            <button id="uploadbtn" type="button" class="btn btn-sm btn-white border shadow-sm rounded-pill" onclick="document.getElementById('fileInput').click();">
+                                Загрузить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <script>
+                document.getElementById('fileInput').addEventListener('change', function() {
+                    if (this.files[0]) document.getElementById('avatar-form').submit();
+                });
+            </script>
+        </div>
+    </div>
+</div>
+
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+{% endblock %}

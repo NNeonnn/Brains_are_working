@@ -54,6 +54,7 @@ app.add_url_rule('/update_inventory', view_func=povar_r.updateinventory, methods
 app.add_url_rule('/buy_to_admin', view_func=povar_r.buy_to_admin, methods=['POST'])
 #admin_routes.py
 app.add_url_rule('/set_admin_query', view_func=admin_r.set_admin_query, methods=['POST'])
+app.add_url_rule('/send_global', view_func=admin_r.send_global, methods=['GET', 'POST'])
 
 @app.errorhandler(404)
 def four04(error):
