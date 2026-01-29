@@ -45,3 +45,6 @@ def send_global_file():
                 path = f"{base_path}/tovars/global_menu.txt"
                 txt.save(path)
     return render_template('send_global.html', **commonkwargs(email))
+ # {% for id, item in tovarlist.items() %}
+ #        <option selected>item.name</option>
+ #        {% endfor %} -->
