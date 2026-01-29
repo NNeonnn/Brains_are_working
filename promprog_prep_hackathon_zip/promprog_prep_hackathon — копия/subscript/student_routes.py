@@ -107,3 +107,10 @@ def payment():
         setuser(email, usernow)
         return redirect(url_for('dashboard'))
     return render_template('payment.html', **kwargs)
+
+def pay():
+    email = getlogin()
+    kwargs = commonkwargs(email)
+    if (kwargs['rights'] != 1):
+        return redirect(url_for('dashboard'))
+    return render_template('pay.html', **kwargs)
