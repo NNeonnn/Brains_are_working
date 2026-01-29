@@ -46,10 +46,14 @@
 </style>
 <div class="mb-3" style="width: 70%; margin-left: auto; margin-right: auto; text-align: center; align-items: center;">
     <label class="form-label fw-semibold small text-muted">Удалить товар по названию</label>
-    <select class="form-select form-select-lg-custom">
+    <select class="form-select form-select-lg-custom" method="POST">
         {% for id, item in tovarlist.items() %}
             <option selected>{{item.name}}</option>
         {% endfor %}
     </select>
+</div>
+<div class="d-flex gap-2">
+    <button class="btn btn-outline-primary btn-pill flex-grow-1">Отмена</button>
+    <button class="btn btn-primary-custom btn-pill flex-grow-1">Применить</button>
 </div>
 {% endblock %}
