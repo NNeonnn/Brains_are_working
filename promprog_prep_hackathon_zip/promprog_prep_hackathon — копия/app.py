@@ -31,7 +31,7 @@ Session(app)
 app.add_url_rule('/', view_func=simple_r.landing)
 app.add_url_rule('/pricing', view_func=simple_r.pricing)
 #app.add_url_rule('/ultimate_dashboard', view_func=simple_r.ultimate_dashboard)
-app.add_url_rule('/rand/<id>', view_func=simple_r.rand)
+#app.add_url_rule('/rand/<id>', view_func=simple_r.rand)
 #account_routes.py
 app.add_url_rule('/login', view_func=account_r.login, methods=['GET', 'POST'])
 app.add_url_rule('/register', view_func=account_r.register, methods=['GET', 'POST'])
