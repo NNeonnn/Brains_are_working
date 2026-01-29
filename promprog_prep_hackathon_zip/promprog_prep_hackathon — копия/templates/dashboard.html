@@ -143,7 +143,10 @@
                         </div>
                         {% endif %}
                     </div>
-
+                    <div class="mt-4" style="width: 70%; margin-left: auto; margin-right: auto; text-align: center; align-items: center;">
+                        <label class="form-label fw-semibold small text-muted">Дата начала</label>
+                        <input type="date" class="form-control rounded-3" value="{{ now_date }}">
+                    </div>
                     <!-- 2.2 КОРЗИНА (ВАШ ЗАКАЗ) -->
                     {% if rights == 1 %}
                     <div class="p-3">
@@ -156,10 +159,17 @@
                         {% if cart_items %}
                         <div class="d-flex flex-column gap-2 mb-3" style="max-height: 200px; overflow-y: auto;">
                             {% for item in cart_items %}
+                            {% if item[1] == 1 %}
                             <div class="d-flex justify-content-between align-items-center small">
                                 <span>{{ item[0].name }} x{{ item[1] }}</span>
                                 <span class="fw-bold">{{ item[0].price }} ₽</span>
                             </div>
+                            {% else %}
+                            <div class="d-flex justify-content-between align-items-center small" style="color: red;">
+                                <span style="color: red;">{{ item[0].name }} x{{ item[1] }}</span>
+                                <span class="fw-bold" style="color: red;">{{ item[0].price }} ₽</span>
+                            </div>
+                            {% endif %}
                             {% endfor %}
                         </div>
 
