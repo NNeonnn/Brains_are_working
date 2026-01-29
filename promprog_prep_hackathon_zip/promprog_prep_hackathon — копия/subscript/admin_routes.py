@@ -23,13 +23,6 @@ def send_global():
     user = getuser(email)
     if (email == 'placeholder' or user['rights'] != 3):
         return redirect(url_for('login'), 302)
-    if (request.method == 'POST'):
-        data = request.form.to_dict(flat=False)
-        if (data['commit_type'][0] == 'update_photo'):
-            txt = request.files['global_menu']
-            if (txt.filename != ''):
-                path = f"{base_path}/tovars/global_menu.txt"
-                txt.save(path)
     return render_template('send_global.html', tovarlist=gettovarlist(), **commonkwargs(email))
 
 def send_global_file():
@@ -44,7 +37,7 @@ def send_global_file():
             if (txt.filename != ''):
                 path = f"{base_path}/tovars/global_menu.txt"
                 txt.save(path)
-    return render_template('send_global.html', tovarlist=gettovarlist(), **commonkwargs(email))
- # {% for id, item in tovarlist.items() %}
- #        <option selected>item.name</option>
- #        {% endfor %} -->
+                f = parse_menu_txt()
+                setglobtovarlist(f[0])
+                setcats(f[1])
+    return redirect(url_for('send_global'), 302)

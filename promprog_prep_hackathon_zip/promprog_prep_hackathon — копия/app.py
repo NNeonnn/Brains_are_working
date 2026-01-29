@@ -48,9 +48,9 @@ app.add_url_rule('/payment', view_func=student_r.payment, methods=['GET', 'POST'
 #product_routes.py
 app.add_url_rule('/product/<id>', view_func=product_r.product_detail, methods=['GET'])
 #povar_routes.py
-app.add_url_rule('/send_food/<id>', view_func=povar_r.sendfood)
-app.add_url_rule('/update_inventory', view_func=povar_r.updateinventory, methods=['POST'])
-app.add_url_rule('/buy_to_admin', view_func=povar_r.buy_to_admin, methods=['POST'])
+#app.add_url_rule('/send_food/<id>', view_func=povar_r.sendfood)
+#app.add_url_rule('/update_inventory', view_func=povar_r.updateinventory, methods=['POST'])
+#app.add_url_rule('/buy_to_admin', view_func=povar_r.buy_to_admin, methods=['POST'])
 #admin_routes.py
 app.add_url_rule('/set_admin_query', view_func=admin_r.set_admin_query, methods=['POST'])
 app.add_url_rule('/send_global', view_func=admin_r.send_global, methods=['GET'])
@@ -74,7 +74,7 @@ def dashboard():
         cart_items, cart_total = student_r.get_cart_objects(email)
         kwargs['cart_items'] = cart_items
         kwargs['cart_total'] = cart_total
-        return render_template('dashboard.html', tovarlist=gettovarlist(), takequeries=getuser(email)['to_take'], **kwargs)
+        return render_template('dashboard.html', tovarlist=gettovarlist(), takequeries=getuser(email)['to_take'], getcats=getcats(), **kwargs)
     elif (kwargs['rights'] == 2):
         return render_template('dashboard.html', **kwargs, querylist=getquerylist("student_to_povar.json"),\
                                                            productlist=getquerylist("povar.json"),

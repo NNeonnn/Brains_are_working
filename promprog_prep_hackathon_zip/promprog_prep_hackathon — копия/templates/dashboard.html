@@ -86,7 +86,7 @@
     <div class="row g-4">
         <!-- ЛЕВАЯ КОЛОНКА -->
         <div class="col-lg-3">
-            <div class="sticky-top" style="top: 100px;">
+            <div style="top: 100px;">
 
                 <!-- ОБЪЕДИНЕННЫЙ БЛОК: ФИЛЬТРЫ + КОРЗИНА -->
                 <div class="card border-0 shadow-sm mb-4">
@@ -96,26 +96,11 @@
                         <div class="mb-4">
                             <span class="filter-group-title">КАТЕГОРИИ</span>
                             <div class="d-flex flex-column gap-2">
+                                {% for i in getcats %}
                                 <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Второе горячее блюдо" checked id="c1"><label class="form-check-label cursor-pointer"
-                                        for="c1">Второе горячее блюдо</label></div>
-                                <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Гарнир" checked id="c2"><label class="form-check-label cursor-pointer"
-                                        for="c2">Гарнир</label></div>
-                                <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Готовое кулинарное блюдо" checked id="c3"><label class="form-check-label cursor-pointer"
-                                        for="c3">Готовое кулинарное блюдо</label></div>
-                                <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Напиток" checked id="c4"><label class="form-check-label cursor-pointer"
-                                        for="c4">Напиток</label></div>
-                                <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Салат" checked id="c5"><label class="form-check-label cursor-pointer"
-                                        for="c5">Салат</label></div>
-                                <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox"
-                                        value="Суп" checked id="c6"><label class="form-check-label cursor-pointer"
-                                        for="c6">Суп</label></div>
-                                <div class="form-check"><input class="form-check-input filter-checkbox" type="checkbox" value="Хлеб" checked id="c7"><label class="form-check-label cursor-pointer"
-                                                                                                  for="c7">Хлеб</label></div>
+                                        value="{{i}}" checked id="c1"><label class="form-check-label cursor-pointer"
+                                        for="c1">{{i}}</label></div>
+                                {% endfor %}
                             </div>
                         </div>
 
@@ -233,11 +218,6 @@
                         <a href="{{ url_for('product_detail', id=id) }}" class="text-decoration-none text-dark">
                             <div class="product-img-wrapper d-flex align-items-center justify-content-center bg-light"
                                 style="height: 180px;">
-                                {% if item.badge %}
-                                <span
-                                    class="product-badge text-white position-absolute top-0 start-0 m-3 px-2 py-1 rounded-pill small"
-                                    style="background-color: {{ item.color }};">{{ item.badge }}</span>
-                                {% endif %}
                                 <i class="bi {{ item.main_icon }}"
                                     style="font-size: 4rem; color: {{ item.color }}; opacity: 0.8;"></i>
                             </div>

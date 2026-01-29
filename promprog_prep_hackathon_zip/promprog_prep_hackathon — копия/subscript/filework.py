@@ -57,6 +57,22 @@ def gettovar(id):
             return json.loads(f.read())
     return False
 
+def setglobtovar(id, to):
+    tovars = gettovarlist()
+    tovars[str(id)] = to
+    users_path = f"{base_path}/tovars/globtovars.json"
+    with open(users_path, 'w', encoding='utf-8') as f:
+        f.write(json.dumps(tovars, indent = 4))
+
+def getglobtovar(id):
+    tovars_path = f"{base_path}/tovars/globtovars.json"
+    with open(tovars_path, 'r', encoding='utf-8') as f:
+        return json.loads(f.read())[id]
+    if os.path.exists(tovars_path):
+        with open(tovars_path, 'r', encoding='utf-8') as f:
+            return json.loads(f.read())
+    return False
+
 def setquerylist(name, to):
     users_path = f"{base_path}/queries/{name}"
     with open(users_path, 'w', encoding='utf-8') as f:
@@ -70,27 +86,45 @@ def getquerylist(name):
     return False
 
 def gettovarlist():
-
     with open(f"{base_path}/tovars/tovars.json", 'r', encoding='utf-8') as f:
         return json.loads(f.read())
 
-def parse_menu_txt(path):
+def getglobtovarlist():
+    with open(f"{base_path}/tovars/global_tovars.json", 'r', encoding='utf-8') as f:
+        return json.loads(f.read())
+
+def getcats():
+    with open(f"{base_path}/tovars/list_of_categories.json", 'r', encoding='utf-8') as f:
+        return json.loads(f.read())
+
+def setcats(to):
+    with open(f"{base_path}/tovars/list_of_categories.json", 'w', encoding='utf-8') as f:
+        f.write(json.dumps(to, indent = 4))
+
+def setglobtovarlist(to):
+    #users_path = f"{base_path}/tovars/global_tovars.json" #########################################
+    users_path = f"{base_path}/tovars/tovars.json"
+    with open(users_path, 'w', encoding='utf-8') as f:
+        f.write(json.dumps(to, indent = 4))
+
+def parse_menu_txt():
     jason = {}
+    cats = {}
     last = "hohoho"
-    with open(f'{path}/Меню.txt', 'r', encoding='utf-8') as f:
+    with open(f'{base_path}/tovars/global_menu.txt', 'r', encoding='utf-8') as f:
         arr = f.read().split('\n')
         i = 6
         id = 1
         while (i < len(arr) - 1):
             if (arr[i + 3][-1] != '₽'):
-                jason[arr[i]] = []
                 last = arr[i]
-            i += 1
-            jason[i] = ({"name": arr[i], "category": last, "price": int(arr[i + 3][0:-1]), \
+                i += 1
+            jason[id] = ({"name": arr[i], "category": last, "price": int(arr[i + 3][0:-1]), \
                         "weight": int(arr[i + 2][0:-3]), "description": arr[i + 1], "badge": "ниче", \
                         "old_price": 0, "badge": "гойда", "main_icon": "bi-cup-straw", \
                         "specs": {"Калорийность": "45 ккал", "Сарах": "5 г", "Объём": "200 мл", "Температура": "Холодный"},
                         "reviews": [], "gallery": ["bi-cup-straw"]})
-        i += 4
-        id += 1
-    return jason
+            cats |= {last: 1}
+            i += 4
+            id += 1
+    return [jason, cats]
