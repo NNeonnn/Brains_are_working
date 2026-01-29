@@ -1,0 +1,333 @@
+{% extends "base.html" %}
+{% block title %}Математические формулы и формы{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+        <h1 class="display-title display-4 mb-3">
+            Математические <span class="text-gradient">формулы</span>
+        </h1>
+        <p class="text-secondary lead mb-5">
+            Исследуйте различные формы ввода и математические выражения
+        </p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Левая колонка: Простые формулы -->
+        <div class="col-lg-6">
+            <div class="card card-hover p-4 border-0 shadow-sm h-100">
+                <div class="d-flex align-items-center gap-2 mb-4">
+                    <div class="feature-icon bg-success bg-opacity-10 text-success">
+                        <i class="bi bi-calculator"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0">Базовые формулы</h4>
+                </div>
+
+                <!-- Форма с выбором типа формулы -->
+                <form class="mb-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Выберите тип формулы</label>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="formulaType" id="linear" checked>
+                                <label class="form-check-label" for="linear">Линейная</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="formulaType" id="quadratic">
+                                <label class="form-check-label" for="quadratic">Квадратичная</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="formulaType" id="exponential">
+                                <label class="form-check-label" for="exponential">Экспоненциальная</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Введите коэффициент a</label>
+                        <input type="range" class="form-range" min="1" max="10" value="3" id="coefA">
+                        <div class="d-flex justify-content-between small text-muted">
+                            <span>1</span>
+                            <span id="coefAValue">3</span>
+                            <span>10</span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Цвет графика</label>
+                        <input type="color" class="form-control form-control-color" value="#3b82f6" title="Выберите цвет">
+                    </div>
+                </form>
+
+                <!-- Отображение формулы -->
+                <div class="bg-light rounded-3 p-4 mb-4">
+                    <h6 class="fw-bold text-muted mb-3">Текущая формула:</h6>
+                    <div class="math-formula fs-3 text-center">
+                        <span id="formulaDisplay">f(x) = 3x + 5</span>
+                    </div>
+                    <div class="text-center mt-3">
+                        <small class="text-muted">Unicode версия: f(x) = 3x + 5</small>
+                    </div>
+                </div>
+
+                <!-- Быстрый ввод чисел -->
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Быстрые значения x</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button class="btn btn-sm btn-outline-primary" data-value="0">0</button>
+                        <button class="btn btn-sm btn-outline-primary" data-value="1">1</button>
+                        <button class="btn btn-sm btn-outline-primary" data-value="2">2</button>
+                        <button class="btn btn-sm btn-outline-primary" data-value="π">π</button>
+                        <button class="btn btn-sm btn-outline-primary" data-value="e">e</button>
+                        <button class="btn btn-sm btn-outline-primary" data-value="10">10</button>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary-custom btn-pill">Рассчитать</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка: Сложные формулы и вычисления -->
+        <div class="col-lg-6">
+            <div class="card card-hover p-4 border-0 shadow-sm h-100">
+                <div class="d-flex align-items-center gap-2 mb-4">
+                    <div class="feature-icon bg-primary bg-opacity-10 text-primary">
+                        <i class="bi bi-infinity"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0">Сложные вычисления</h4>
+                </div>
+
+                <!-- LaTeX формулы -->
+                <div class="mb-4">
+                    <h6 class="fw-bold text-muted mb-3">Формулы в LaTeX:</h6>
+                    <div class="bg-dark text-light rounded-3 p-3 mb-3">
+                        <code class="small">\int_{a}^{b} f(x)\,dx = F(b) - F(a)</code>
+                    </div>
+                    <div class="bg-dark text-light rounded-3 p-3 mb-3">
+                        <code class="small">\frac{d}{dx} e^{ax} = ae^{ax}</code>
+                    </div>
+                    <div class="bg-dark text-light rounded-3 p-3">
+                        <code class="small">\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}</code>
+                    </div>
+                </div>
+
+                <!-- Большие дроби и Unicode -->
+                <div class="mb-4">
+                    <h6 class="fw-bold text-muted mb-3">Дроби и специальные символы:</h6>
+                    <div class="text-center">
+                        <div class="math-large fs-2 mb-3">
+                            <span class="border-bottom border-2">a + b</span>
+                            <div class="fs-5">––––––––</div>
+                            <span>c - d</span>
+                        </div>
+                        <div class="text-muted small">
+                            Unicode: ½ ⅓ ¼ ¾ ± √ ∞ ≈ ≠ ≤ ≥
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Интерактивная формула -->
+                <div class="mb-4">
+                    <h6 class="fw-bold text-muted mb-3">Калькулятор площади круга</h6>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">r =</span>
+                        <input type="number" class="form-control" id="radiusInput" value="5" step="0.1" min="0">
+                        <span class="input-group-text">S = π × r²</span>
+                    </div>
+                    <div class="alert alert-info">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span>Результат:</span>
+                            <strong id="circleResult">78.54</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Чекбоксы для дополнительных опций -->
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Дополнительные опции</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="showSteps">
+                        <label class="form-check-label" for="showSteps">Показывать шаги вычислений</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="usePrecision">
+                        <label class="form-check-label" for="usePrecision">Высокая точность (10 знаков)</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="saveHistory">
+                        <label class="form-check-label" for="saveHistory">Сохранять историю вычислений</label>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-primary btn-pill">Экспорт результата</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Третья карточка: Матрицы и векторы -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card card-hover p-4 border-0 shadow-sm">
+                <div class="d-flex align-items-center gap-2 mb-4">
+                    <div class="feature-icon bg-warning bg-opacity-10 text-warning">
+                        <i class="bi bi-grid-3x3"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0">Матрицы и векторы</h4>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="bg-light rounded-3 p-3">
+                            <h6 class="fw-bold text-muted mb-3">Ввод матрицы 2×2</h6>
+                            <div class="row g-2 mb-2">
+                                <div class="col-6">
+                                    <input type="number" class="form-control text-center" value="1" placeholder="a₁₁">
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="form-control text-center" value="2" placeholder="a₁₂">
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <input type="number" class="form-control text-center" value="3" placeholder="a₂₁">
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" class="form-control text-center" value="4" placeholder="a₂₂">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="bg-light rounded-3 p-3">
+                            <h6 class="fw-bold text-muted mb-3">Вектор</h6>
+                            <div class="mb-2">
+                                <input type="number" class="form-control mb-2" value="3" placeholder="x">
+                                <input type="number" class="form-control mb-2" value="4" placeholder="y">
+                                <input type="number" class="form-control" value="5" placeholder="z">
+                            </div>
+                            <div class="text-center">
+                                <small class="text-muted">|v| = <span id="vectorLength">7.07</span></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="bg-light rounded-3 p-3 h-100">
+                            <h6 class="fw-bold text-muted mb-3">Операции</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <button class="btn btn-sm btn-outline-secondary">Определитель</button>
+                                <button class="btn btn-sm btn-outline-secondary">Транспонирование</button>
+                                <button class="btn btn-sm btn-outline-secondary">Обратная матрица</button>
+                                <button class="btn btn-sm btn-outline-secondary">Скалярное произведение</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Отображение матрицы в виде формулы -->
+                <div class="mt-4 bg-dark text-light rounded-3 p-3">
+                    <div class="text-center">
+                        <code>
+                            A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}, \quad 
+                            \vec{v} = \begin{pmatrix} 3 \\ 4 \\ 5 \end{pmatrix}
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Минимальные дополнительные стили для математического контента */
+    .math-formula {
+        font-family: 'Times New Roman', Times, serif;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .math-large {
+        font-family: 'Times New Roman', Times, serif;
+        line-height: 1.2;
+    }
+    
+    code {
+        font-family: 'Courier New', monospace;
+    }
+    
+    .form-control-color {
+        height: 45px;
+        padding: 0.375rem;
+    }
+    
+    .border-bottom {
+        padding-bottom: 2px;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Обновление значения коэффициента A
+        const coefA = document.getElementById('coefA');
+        const coefAValue = document.getElementById('coefAValue');
+        const formulaDisplay = document.getElementById('formulaDisplay');
+        
+        coefA.addEventListener('input', function() {
+            coefAValue.textContent = this.value;
+            formulaDisplay.textContent = `f(x) = ${this.value}x + 5`;
+        });
+        
+        // Калькулятор площади круга
+        const radiusInput = document.getElementById('radiusInput');
+        const circleResult = document.getElementById('circleResult');
+        
+        function calculateCircleArea() {
+            const radius = parseFloat(radiusInput.value) || 0;
+            const area = (Math.PI * radius * radius).toFixed(2);
+            circleResult.textContent = area;
+        }
+        
+        radiusInput.addEventListener('input', calculateCircleArea);
+        
+        // Расчет длины вектора
+        const vectorLength = document.getElementById('vectorLength');
+        const vectorInputs = document.querySelectorAll('.bg-light.rounded-3.p-3:nth-child(2) input');
+        
+        function calculateVectorLength() {
+            let sumOfSquares = 0;
+            vectorInputs.forEach(input => {
+                const value = parseFloat(input.value) || 0;
+                sumOfSquares += value * value;
+            });
+            const length = Math.sqrt(sumOfSquares).toFixed(2);
+            vectorLength.textContent = length;
+        }
+        
+        vectorInputs.forEach(input => {
+            input.addEventListener('input', calculateVectorLength);
+        });
+        
+        // Быстрые значения для x
+        const quickButtons = document.querySelectorAll('[data-value]');
+        quickButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const value = this.getAttribute('data-value');
+                alert(`Выбрано значение x = ${value}`);
+            });
+        });
+        
+        // Инициализация расчетов
+        calculateCircleArea();
+        calculateVectorLength();
+    });
+</script>
+{% endblock %}

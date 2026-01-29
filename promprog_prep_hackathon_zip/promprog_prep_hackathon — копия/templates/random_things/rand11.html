@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Математические формы и формулы</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .form-section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+        
+        .form-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .form-title {
+            font-size: 1.3rem;
+            color: #2980b9;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f1f1;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input, .checkbox-option input {
+            margin-right: 10px;
+        }
+        
+        .color-picker {
+            width: 60px;
+            height: 40px;
+            padding: 3px;
+            cursor: pointer;
+        }
+        
+        .math-formula {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        
+        .latex-formula {
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 10px;
+            margin: 15px 0;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+        }
+        
+        .interactive-formula {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .formula-result {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-top: 10px;
+            padding: 8px;
+            background-color: #fff;
+            border-radius: 4px;
+            border: 1px dashed #ddd;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: #7f8c8d;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #6c7b7d;
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Математические формы и формулы</h1>
+        <p class="subtitle">Формы с различными элементами ввода и математическими выражениями</p>
+    </header>
+    
+    <div class="container">
+        <!-- Форма 1: Основные математические формулы -->
+        <section class="form-section">
+            <h2 class="form-title">Формы с основными формулами</h2>
+            
+            <div class="form-group">
+                <label>Ваше имя:</label>
+                <input type="text" placeholder="Введите ваше имя">
+            </div>
+            
+            <div class="form-group">
+                <label>Выберите тип формулы:</label>
+                <select>
+                    <option value="quadratic">Квадратное уравнение</option>
+                    <option value="pythagorean">Теорема Пифагора</option>
+                    <option value="circle">Площадь круга</option>
+                    <option value="derivative">Производная</option>
+                </select>
+            </div>
+            
+            <div class="math-formula">
+                <strong>Квадратное уравнение:</strong><br>
+                ax² + bx + c = 0<br>
+                <strong>Дискриминант:</strong> D = b² - 4ac<br>
+                <strong>Корни:</strong> x₁,₂ = (-b ± √D) / (2a)
+            </div>
+            
+            <div class="latex-formula">
+                Формула Эйлера: \( e^{i\pi} + 1 = 0 \)
+            </div>
+            
+            <div class="form-group">
+                <label>Выберите цвет формулы:</label>
+                <input type="color" class="color-picker" value="#3498db">
+            </div>
+            
+            <button type="button">Сохранить выбор</button>
+        </section>
+        
+        <!-- Форма 2: Дроби и Unicode символы -->
+        <section class="form-section">
+            <h2 class="form-title">Дроби и Unicode символы</h2>
+            
+            <div class="form-row">
+                <div class="form-group" style="flex: 1;">
+                    <label>Числитель:</label>
+                    <input type="number" value="3" min="1" max="100">
+                </div>
+                
+                <div class="form-group" style="flex: 1;">
+                    <label>Знаменатель:</label>
+                    <input type="number" value="4" min="1" max="100">
+                </div>
+            </div>
+            
+            <div class="math-formula">
+                <strong>Обычная дробь:</strong> 3/4<br>
+                <strong>Вид в Unicode:</strong> ¾<br>
+                <strong>Большая дробь:</strong> 
+                <div style="font-size: 1.5rem; text-align: center; margin: 10px 0;">
+                    <span style="border-bottom: 2px solid #333;">3</span><br>4
+                </div>
+            </div>
+            
+            <div class="latex-formula">
+                Большая дробь в LaTeX: \( \frac{x^2 + 3x + 2}{x^2 - 4} \)
+            </div>
+            
+            <div class="form-group">
+                <label>Другие математические символы Unicode:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="symbol1" checked>
+                        <label for="symbol1">∫ (интеграл)</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="symbol2">
+                        <label for="symbol2">∑ (сумма)</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="symbol3">
+                        <label for="symbol3">∞ (бесконечность)</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="symbol4">
+                        <label for="symbol4">√ (корень)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="btn-secondary">Сбросить</button>
+                <button type="button">Применить</button>
+            </div>
+        </section>
+        
+        <!-- Форма 3: Интерактивные формулы -->
+        <section class="form-section">
+            <h2 class="form-title">Интерактивные формулы</h2>
+            
+            <div class="form-group">
+                <label>Введите значение x:</label>
+                <input type="number" id="xValue" value="5" step="0.5" min="-100" max="100">
+            </div>
+            
+            <div class="interactive-formula">
+                <strong>Формула 1:</strong> f(x) = x² + 3x - 2<br>
+                <div class="formula-result" id="result1">f(5) = 38</div>
+            </div>
+            
+            <div class="interactive-formula">
+                <strong>Формула 2:</strong> g(x) = 2<sup>x</sup> + 1<br>
+                <div class="formula-result" id="result2">g(5) = 33</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Выберите формулу для отображения:</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="formula1" name="formula" checked>
+                        <label for="formula1">Линейная: y = kx + b</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="formula2" name="formula">
+                        <label for="formula2">Квадратичная: y = ax² + bx + c</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="formula3" name="formula">
+                        <label for="formula3">Показательная: y = a<sup>x</sup></label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="latex-formula">
+                Интеграл в LaTeX: \( \int_{0}^{1} x^2 \, dx \)
+            </div>
+            
+            <button type="button" id="calculateBtn">Вычислить все формулы</button>
+        </section>
+        
+        <!-- Форма 4: Комплексные математические выражения -->
+        <section class="form-section">
+            <h2 class="form-title">Комплексные выражения</h2>
+            
+            <div class="form-group">
+                <label>Ваш email:</label>
+                <input type="email" placeholder="email@example.com">
+            </div>
+            
+            <div class="form-group">
+                <label>Выберите сложность формулы:</label>
+                <select>
+                    <option value="simple">Простая</option>
+                    <option value="medium">Средняя</option>
+                    <option value="complex">Сложная</option>
+                </select>
+            </div>
+            
+            <div class="math-formula">
+                <strong>Формула длины окружности:</strong> C = 2πr<br>
+                <strong>Формула площади круга:</strong> A = πr²<br>
+                <strong>Объём шара:</strong> V = (4/3)πr³
+            </div>
+            
+            <div class="latex-formula">
+                Формула квадратного уравнения: \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)
+            </div>
+            
+            <div class="form-group">
+                <label>Комментарии к формуле:</label>
+                <textarea rows="3" placeholder="Введите ваши комментарии..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Отметьте математические константы:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="const1" checked>
+                        <label for="const1">π ≈ 3.14159</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="const2">
+                        <label for="const2">e ≈ 2.71828</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="const3">
+                        <label for="const3">φ ≈ 1.61803 (золотое сечение)</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" class="btn-secondary">Отмена</button>
+                <button type="button">Отправить</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Математические формы и формулы • Формы созданы для демонстрации различных элементов ввода и математических выражений</p>
+    </footer>
+    
+    <script>
+        // Функции для вычисления интерактивных формул
+        function calculateFormula1(x) {
+            return x * x + 3 * x - 2;
+        }
+        
+        function calculateFormula2(x) {
+            return Math.pow(2, x) + 1;
+        }
+        
+        // Обновление результатов формул
+        function updateResults() {
+            const xValue = parseFloat(document.getElementById('xValue').value) || 0;
+            
+            // Обновляем результат первой формулы
+            const result1 = calculateFormula1(xValue);
+            document.getElementById('result1').textContent = `f(${xValue}) = ${result1}`;
+            
+            // Обновляем результат второй формулы
+            const result2 = calculateFormula2(xValue);
+            document.getElementById('result2').textContent = `g(${xValue}) = ${result2}`;
+        }
+        
+        // Обработчики событий
+        document.getElementById('xValue').addEventListener('input', updateResults);
+        document.getElementById('calculateBtn').addEventListener('click', updateResults);
+        
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            updateResults();
+            
+            // Инициализация MathJax для рендеринга LaTeX формул
+            if (window.MathJax) {
+                window.MathJax.typesetPromise();
+            }
+        });
+    </script>
+</body>
+</html>

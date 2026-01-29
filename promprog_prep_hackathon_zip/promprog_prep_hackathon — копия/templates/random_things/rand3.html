@@ -1,0 +1,461 @@
+{% extends "base.html" %}
+{% block title %}Демо форм{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-title fw-bold mb-3">Демонстрация <span class="text-gradient">UI-элементов</span></h1>
+        <p class="text-secondary lead">Различные типы полей ввода, кнопок и переключателей</p>
+    </div>
+
+    <div class="row g-5">
+        <!-- Левая колонка: Основные формы -->
+        <div class="col-lg-7">
+            <!-- Карточка 1: Личная информация -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-white border-bottom pt-4 px-4">
+                    <h4 class="fw-bold mb-0">Личная информация</h4>
+                    <p class="text-muted small mb-0">Заполните основные данные</p>
+                </div>
+                <div class="card-body p-4">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Имя</label>
+                                <input type="text" class="form-control rounded-3" placeholder="Введите ваше имя">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Фамилия</label>
+                                <input type="text" class="form-control rounded-3" placeholder="Введите вашу фамилию">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-bold">Электронная почта</label>
+                                <input type="email" class="form-control rounded-3" placeholder="example@school.ru">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-bold">О себе</label>
+                                <textarea class="form-control rounded-3" rows="3" placeholder="Расскажите о себе..."></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Карточка 2: Радио-кнопки с разными стилями -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-white border-bottom pt-4 px-4">
+                    <h4 class="fw-bold mb-0">Выбор типа профиля</h4>
+                    <p class="text-muted small mb-0">Каждый вариант имеет уникальный стиль</p>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3">
+                        <!-- Стиль 1: Иконки -->
+                        <div class="col-md-4">
+                            <div class="form-check p-3 border rounded-3 h-100">
+                                <input class="form-check-input" type="radio" name="profileType" id="basicType">
+                                <label class="form-check-label w-100" for="basicType">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-circle mb-2">
+                                            <i class="bi bi-person fs-4"></i>
+                                        </div>
+                                        <h6 class="fw-bold mb-1">Базовый</h6>
+                                        <p class="text-muted small mb-0">Стандартный доступ</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Стиль 2: Цветной акцент -->
+                        <div class="col-md-4">
+                            <div class="form-check p-3 border rounded-3 h-100 border-primary">
+                                <input class="form-check-input" type="radio" name="profileType" id="premiumType" checked>
+                                <label class="form-check-label w-100" for="premiumType">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <div class="bg-warning bg-opacity-10 text-warning p-3 rounded-circle mb-2">
+                                            <i class="bi bi-star fs-4"></i>
+                                        </div>
+                                        <h6 class="fw-bold mb-1">Премиум</h6>
+                                        <p class="text-muted small mb-0">Расширенные возможности</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Стиль 3: С бейджем -->
+                        <div class="col-md-4">
+                            <div class="form-check p-3 border rounded-3 h-100 position-relative">
+                                <span class="badge bg-danger position-absolute top-0 start-50 translate-middle">NEW</span>
+                                <input class="form-check-input" type="radio" name="profileType" id="proType">
+                                <label class="form-check-label w-100" for="proType">
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                        <div class="bg-success bg-opacity-10 text-success p-3 rounded-circle mb-2">
+                                            <i class="bi bi-lightning fs-4"></i>
+                                        </div>
+                                        <h6 class="fw-bold mb-1">PRO</h6>
+                                        <p class="text-muted small mb-0">Максимальные возможности</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 3: Числовые выборы и слайдер -->
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-header bg-white border-bottom pt-4 px-4">
+                    <h4 class="fw-bold mb-0">Настройки и параметры</h4>
+                    <p class="text-muted small mb-0">Выбор числовых значений разными способами</p>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Количество элементов</label>
+                            <div class="input-group">
+                                <button class="btn btn-outline-secondary" type="button" id="decreaseBtn">-</button>
+                                <input type="number" class="form-control text-center" value="5" min="1" max="20" id="quantityInput">
+                                <button class="btn btn-outline-secondary" type="button" id="increaseBtn">+</button>
+                            </div>
+                            <div class="form-text">Выберите от 1 до 20 элементов</div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Уровень приоритета: <span id="priorityValue">3</span></label>
+                            <input type="range" class="form-range" min="1" max="5" step="1" value="3" id="prioritySlider">
+                            <div class="d-flex justify-content-between mt-1">
+                                <small class="text-muted">Низкий</small>
+                                <small class="text-muted">Средний</small>
+                                <small class="text-muted">Высокий</small>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Выбор цвета</label>
+                            <div class="d-flex flex-wrap gap-2">
+                                <div class="form-check-color">
+                                    <input class="form-check-input" type="radio" name="colorOption" id="colorBlue" checked>
+                                    <label class="form-check-label" for="colorBlue">
+                                        <span class="color-dot bg-primary"></span>
+                                        <span>Синий</span>
+                                    </label>
+                                </div>
+                                <div class="form-check-color">
+                                    <input class="form-check-input" type="radio" name="colorOption" id="colorGreen">
+                                    <label class="form-check-label" for="colorGreen">
+                                        <span class="color-dot bg-success"></span>
+                                        <span>Зеленый</span>
+                                    </label>
+                                </div>
+                                <div class="form-check-color">
+                                    <input class="form-check-input" type="radio" name="colorOption" id="colorPurple">
+                                    <label class="form-check-label" for="colorPurple">
+                                        <span class="color-dot" style="background-color: #9333ea;"></span>
+                                        <span>Фиолетовый</span>
+                                    </label>
+                                </div>
+                                <div class="form-check-color">
+                                    <input class="form-check-input" type="radio" name="colorOption" id="colorOrange">
+                                    <label class="form-check-label" for="colorOrange">
+                                        <span class="color-dot" style="background-color: #f97316;"></span>
+                                        <span>Оранжевый</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая колонка: Дополнительные элементы -->
+        <div class="col-lg-5">
+            <!-- Карточка 4: Чекбоксы и переключатели -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-white border-bottom pt-4 px-4">
+                    <h4 class="fw-bold mb-0">Настройки уведомлений</h4>
+                    <p class="text-muted small mb-0">Выберите, какие уведомления получать</p>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-4">
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" id="notificationsAll" checked>
+                            <label class="form-check-label fw-bold" for="notificationsAll">Все уведомления</label>
+                        </div>
+                        
+                        <div class="ms-4">
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="notificationsEmail" checked>
+                                <label class="form-check-label" for="notificationsEmail">По электронной почте</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="notificationsPush" checked>
+                                <label class="form-check-label" for="notificationsPush">Push-уведомления</label>
+                            </div>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="notificationsSMS">
+                                <label class="form-check-label" for="notificationsSMS">SMS-сообщения</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-top pt-3">
+                        <label class="form-label fw-bold">Частота отчетов</label>
+                        <select class="form-select rounded-3">
+                            <option selected>Ежедневно</option>
+                            <option>Еженедельно</option>
+                            <option>Ежемесячно</option>
+                            <option>Никогда</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 5: Стилизованные чекбоксы -->
+            <div class="card border-0 shadow-sm rounded-4 mb-4">
+                <div class="card-header bg-white border-bottom pt-4 px-4">
+                    <h4 class="fw-bold mb-0">Интересы и предпочтения</h4>
+                    <p class="text-muted small mb-0">Выберите то, что вам интересно</p>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <div class="interest-checkbox-card">
+                                <input class="form-check-input" type="checkbox" id="interestDesign">
+                                <label class="form-check-label w-100" for="interestDesign">
+                                    <i class="bi bi-palette me-2"></i>Дизайн
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="interest-checkbox-card">
+                                <input class="form-check-input" type="checkbox" id="interestTech" checked>
+                                <label class="form-check-label w-100" for="interestTech">
+                                    <i class="bi bi-cpu me-2"></i>Технологии
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="interest-checkbox-card">
+                                <input class="form-check-input" type="checkbox" id="interestMusic">
+                                <label class="form-check-label w-100" for="interestMusic">
+                                    <i class="bi bi-music-note-beamed me-2"></i>Музыка
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="interest-checkbox-card">
+                                <input class="form-check-input" type="checkbox" id="interestSports">
+                                <label class="form-check-label w-100" for="interestSports">
+                                    <i class="bi bi-trophy me-2"></i>Спорт
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="interest-checkbox-card">
+                                <input class="form-check-input" type="checkbox" id="interestBooks">
+                                <label class="form-check-label w-100" for="interestBooks">
+                                    <i class="bi bi-book me-2"></i>Книги
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="interest-checkbox-card">
+                                <input class="form-check-input" type="checkbox" id="interestTravel" checked>
+                                <label class="form-check-label w-100" for="interestTravel">
+                                    <i class="bi bi-globe me-2"></i>Путешествия
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 6: Кнопки действий -->
+            <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-header bg-white border-bottom pt-4 px-4">
+                    <h4 class="fw-bold mb-0">Действия с формой</h4>
+                    <p class="text-muted small mb-0">Различные типы кнопок</p>
+                </div>
+                <div class="card-body p-4">
+                    <div class="d-grid gap-3">
+                        <button class="btn btn-primary-custom btn-pill py-2 fw-bold">
+                            <i class="bi bi-check-circle me-2"></i>Сохранить изменения
+                        </button>
+                        
+                        <button class="btn btn-outline-primary btn-pill py-2">
+                            <i class="bi bi-save me-2"></i>Сохранить черновик
+                        </button>
+                        
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-light border btn-pill flex-grow-1">
+                                <i class="bi bi-arrow-clockwise me-2"></i>Сбросить
+                            </button>
+                            <button class="btn btn-outline-danger btn-pill flex-grow-1">
+                                <i class="bi bi-trash me-2"></i>Удалить
+                            </button>
+                        </div>
+                        
+                        <div class="text-center mt-2">
+                            <button class="btn btn-link text-decoration-none text-muted">
+                                <i class="bi bi-download me-1"></i>Экспортировать настройки
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Дополнительные стили для демо-страницы */
+    .form-check-color {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        background: white;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .form-check-color:hover {
+        border-color: var(--color-accent);
+        background-color: #eff6ff;
+    }
+    
+    .form-check-color input:checked + label {
+        color: var(--color-accent);
+        font-weight: 600;
+    }
+    
+    .color-dot {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 8px;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 1px #cbd5e1;
+    }
+    
+    .form-check-color input:checked + label .color-dot {
+        box-shadow: 0 0 0 2px var(--color-accent);
+    }
+    
+    .form-check-color input {
+        display: none;
+    }
+    
+    .form-check-color label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 0;
+        width: 100%;
+    }
+    
+    .interest-checkbox-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 12px 15px;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: white;
+        height: 100%;
+    }
+    
+    .interest-checkbox-card:hover {
+        border-color: var(--color-accent);
+        background: #eff6ff;
+        transform: translateY(-2px);
+    }
+    
+    .interest-checkbox-card input:checked + label {
+        color: var(--color-accent);
+        font-weight: 700;
+    }
+    
+    .interest-checkbox-card input {
+        display: none;
+    }
+    
+    .interest-checkbox-card label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 0;
+    }
+    
+    #prioritySlider::-webkit-slider-thumb {
+        background-color: var(--color-accent);
+    }
+    
+    #prioritySlider::-moz-range-thumb {
+        background-color: var(--color-accent);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Управление количеством
+        const decreaseBtn = document.getElementById('decreaseBtn');
+        const increaseBtn = document.getElementById('increaseBtn');
+        const quantityInput = document.getElementById('quantityInput');
+        
+        decreaseBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            if (value > 1) {
+                quantityInput.value = value - 1;
+            }
+        });
+        
+        increaseBtn.addEventListener('click', function() {
+            let value = parseInt(quantityInput.value);
+            if (value < 20) {
+                quantityInput.value = value + 1;
+            }
+        });
+        
+        // Отображение значения слайдера
+        const prioritySlider = document.getElementById('prioritySlider');
+        const priorityValue = document.getElementById('priorityValue');
+        
+        prioritySlider.addEventListener('input', function() {
+            priorityValue.textContent = this.value;
+        });
+        
+        // Переключение "Все уведомления"
+        const notificationsAll = document.getElementById('notificationsAll');
+        const notificationCheckboxes = document.querySelectorAll('#notificationsEmail, #notificationsPush, #notificationsSMS');
+        
+        notificationsAll.addEventListener('change', function() {
+            const isChecked = this.checked;
+            notificationCheckboxes.forEach(checkbox => {
+                checkbox.checked = isChecked;
+            });
+        });
+        
+        // Проверка, все ли уведомления выбраны
+        notificationCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const allChecked = Array.from(notificationCheckboxes).every(cb => cb.checked);
+                notificationsAll.checked = allChecked;
+            });
+        });
+        
+        // Анимация при клике на чекбоксы интересов
+        document.querySelectorAll('.interest-checkbox-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+                
+                // Анимация
+                this.style.transform = checkbox.checked ? 'translateY(-2px)' : 'translateY(0)';
+                this.style.boxShadow = checkbox.checked ? '0 4px 12px rgba(59, 130, 246, 0.2)' : 'none';
+            });
+        });
+    });
+</script>
+{% endblock %}

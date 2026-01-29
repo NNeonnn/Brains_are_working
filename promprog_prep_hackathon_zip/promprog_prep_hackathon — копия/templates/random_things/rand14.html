@@ -1,0 +1,330 @@
+{% extends "base.html" %}
+{% block title %}Демо форм{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-2 mb-3">
+            Демонстрация
+        </span>
+        <h1 class="display-title display-4 mb-3">
+            Разнообразные <span class="text-gradient">формы ввода</span>
+        </h1>
+        <p class="text-secondary lead mb-5">
+            Примеры различных полей ввода, кнопок и элементов управления
+        </p>
+    </div>
+
+    <div class="row g-5">
+        <!-- КОЛОНКА 1: Основные формы -->
+        <div class="col-lg-6">
+            <!-- Карточка 1: Текстовые поля -->
+            <div class="card card-hover border-0 shadow-sm p-4 mb-4">
+                <h4 class="fw-bold mb-4">Текстовые поля</h4>
+                
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-muted">Обычное поле</label>
+                    <input type="text" class="form-control rounded-3 py-2" placeholder="Введите текст...">
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-primary">Цветное поле</label>
+                    <input type="text" class="form-control rounded-3 py-2 border-primary" 
+                           style="background-color: #eff6ff;" 
+                           placeholder="Фон и рамка выделены">
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-gradient">Градиентная метка</label>
+                    <input type="text" class="form-control rounded-3 py-2 bg-light border-0" 
+                           placeholder="Метка с градиентом">
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-muted">Расширяющееся поле</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control rounded-start-3 py-2" 
+                               style="min-width: 200px;" 
+                               placeholder="Растёт при вводе..." 
+                               oninput="this.style.width = ((this.value.length + 1) * 10) + 'px';">
+                        <span class="input-group-text rounded-end-3">текст</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 2: Выборы -->
+            <div class="card card-hover border-0 shadow-sm p-4 mb-4">
+                <h4 class="fw-bold mb-4">Элементы выбора</h4>
+                
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Radio кнопки</label>
+                    <div class="d-flex flex-wrap gap-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="radioGroup" id="radio1">
+                            <label class="form-check-label fw-medium" for="radio1">Вариант 1</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="radioGroup" id="radio2">
+                            <label class="form-check-label fw-medium text-success" for="radio2">Зелёный текст</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="radioGroup" id="radio3">
+                            <label class="form-check-label fw-bold text-danger" for="radio3">Жирный красный</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Checkbox</label>
+                    <div class="d-flex flex-column gap-2">
+                        <div class="form-check-custom">
+                            <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="form-check-input">
+                                <span>Обычный чекбокс</span>
+                            </label>
+                            <span class="count-badge">12</span>
+                        </div>
+                        <div class="form-check-custom">
+                            <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="form-check-input" checked>
+                                <span class="text-primary fw-bold">Выбранный</span>
+                            </label>
+                            <span class="badge bg-primary">New</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-muted">Выпадающий список</label>
+                    <select class="form-select form-select-lg-custom">
+                        <option>Выберите вариант</option>
+                        <option>Первый пункт</option>
+                        <option>Второй пункт с длинным текстом</option>
+                        <option>Третий пункт</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- КОЛОНКА 2: Специальные поля -->
+        <div class="col-lg-6">
+            <!-- Карточка 3: Числа и цвета -->
+            <div class="card card-hover border-0 shadow-sm p-4 mb-4">
+                <h4 class="fw-bold mb-4">Числа и цвета</h4>
+                
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-muted">Числовое поле</label>
+                        <input type="number" class="form-control rounded-3 py-2" 
+                               min="0" max="100" step="5" value="50">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-muted">Ползунок</label>
+                        <input type="range" class="form-range" min="0" max="100" value="75">
+                        <div class="text-end small text-muted">75%</div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Выбор цвета</label>
+                    <div class="d-flex gap-3 align-items-center">
+                        <input type="color" class="form-control-color" value="#3b82f6" title="Выберите цвет">
+                        <span class="fw-medium">#3b82f6</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-muted">Цветные кнопки выбора</label>
+                    <div class="d-flex flex-wrap gap-2 mt-2">
+                        <button type="button" class="btn btn-sm rounded-pill px-3" 
+                                style="background-color: #3b82f6; color: white;">Синий</button>
+                        <button type="button" class="btn btn-sm rounded-pill px-3" 
+                                style="background-color: #10b981; color: white;">Зелёный</button>
+                        <button type="button" class="btn btn-sm rounded-pill px-3" 
+                                style="background-color: #f59e0b; color: white;">Оранж</button>
+                        <button type="button" class="btn btn-sm rounded-pill px-3" 
+                                style="background-color: #8b5cf6; color: white;">Фиол</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 4: Текстовые области -->
+            <div class="card card-hover border-0 shadow-sm p-4 mb-4">
+                <h4 class="fw-bold mb-4">Текстовые области</h4>
+                
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-muted">Обычная текстовая область</label>
+                    <textarea class="form-control rounded-3" rows="3" 
+                              placeholder="Введите многострочный текст..."></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-success">Цветная область</label>
+                    <textarea class="form-control rounded-3" rows="2" 
+                              style="background-color: #f0fdf4; border-color: #86efac;"
+                              placeholder="Зелёный фон..."></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-gradient">Счётчик символов</label>
+                    <textarea class="form-control rounded-3" rows="2" 
+                              placeholder="Вводите текст..." 
+                              oninput="document.getElementById('charCount').textContent = this.value.length"></textarea>
+                    <div class="text-end mt-1">
+                        <small class="text-muted">Символов: <span id="charCount">0</span></small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 5: Комбинированная форма -->
+            <div class="card card-hover border-0 shadow-sm p-4" style="border-left: 4px solid #3b82f6;">
+                <h4 class="fw-bold mb-4">Комбинированная форма</h4>
+                
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-muted">Имя</label>
+                        <input type="text" class="form-control rounded-3 py-2 bg-light">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-muted">Возраст</label>
+                        <input type="number" class="form-control rounded-3 py-2" min="0" max="120">
+                    </div>
+                </div>
+                
+                <div class="mt-3">
+                    <label class="form-label small fw-bold text-muted">Предпочтения</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        <div class="interest-checkbox-card">
+                            <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="form-check-input">
+                                <span>Опция A</span>
+                            </label>
+                        </div>
+                        <div class="interest-checkbox-card">
+                            <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="form-check-input">
+                                <span>Опция B</span>
+                            </label>
+                        </div>
+                        <div class="interest-checkbox-card">
+                            <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                <input type="checkbox" class="form-check-input">
+                                <span>Опция C</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <button class="btn btn-primary-custom btn-pill w-100 py-2">Отправить форму</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Нижняя карточка с необычными полями -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card card-hover border-0 shadow-sm p-4" 
+                 style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+                <h4 class="fw-bold mb-4 text-center">Экспериментальные поля</h4>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold text-muted d-block">Круглые переключатели</label>
+                        <div class="d-flex justify-content-around">
+                            <div class="text-center">
+                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto mb-1" 
+                                     style="width: 40px; height: 40px; cursor: pointer;">A</div>
+                                <small>Вариант A</small>
+                            </div>
+                            <div class="text-center">
+                                <div class="rounded-circle bg-light border d-flex align-items-center justify-content-center mx-auto mb-1" 
+                                     style="width: 40px; height: 40px; cursor: pointer;">B</div>
+                                <small>Вариант B</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold text-muted">Поле с иконкой</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="bi bi-search text-muted"></i>
+                            </span>
+                            <input type="text" class="form-control border-start-0" placeholder="Поиск...">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold text-muted">Мини-форма</label>
+                        <div class="d-flex gap-2">
+                            <input type="text" class="form-control form-control-sm rounded-pill" placeholder="Быстрый ввод">
+                            <button class="btn btn-sm btn-primary rounded-pill px-3">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Минимальные дополнительные стили для демонстрации */
+    .form-control-color {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        border: 2px solid #e2e8f0;
+        cursor: pointer;
+        padding: 2px;
+    }
+    
+    .form-control-color:hover {
+        border-color: #3b82f6;
+    }
+    
+    .cursor-pointer {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    // Простой скрипт для демонстрации
+    document.addEventListener('DOMContentLoaded', function() {
+        // Инициализация счётчика символов
+        const textareas = document.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
+            if (!textarea.id) {
+                textarea.addEventListener('input', function() {
+                    const count = this.value.length;
+                    if (!this.nextElementSibling || !this.nextElementSibling.querySelector('.char-counter')) {
+                        const counter = document.createElement('div');
+                        counter.className = 'text-end mt-1 small text-muted char-counter';
+                        counter.innerHTML = `Символов: <span>${count}</span>`;
+                        this.parentNode.appendChild(counter);
+                    } else {
+                        const span = this.nextElementSibling.querySelector('span');
+                        if (span) span.textContent = count;
+                    }
+                });
+            }
+        });
+        
+        // Обработка круглых переключателей
+        document.querySelectorAll('.rounded-circle[style*="cursor: pointer"]').forEach(circle => {
+            circle.addEventListener('click', function() {
+                document.querySelectorAll('.rounded-circle[style*="cursor: pointer"]').forEach(c => {
+                    c.classList.remove('bg-primary', 'text-white');
+                    c.classList.add('bg-light', 'border');
+                });
+                this.classList.add('bg-primary', 'text-white');
+                this.classList.remove('bg-light', 'border');
+            });
+        });
+    });
+</script>
+{% endblock %}

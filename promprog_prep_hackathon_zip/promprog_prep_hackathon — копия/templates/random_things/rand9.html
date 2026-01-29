@@ -1,0 +1,363 @@
+{% extends "base.html" %}
+{% block title %}Галерея форм{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+        <h1 class="display-title fw-bold mb-3">Галерея форм <span class="text-gradient">и изображений</span></h1>
+        <p class="text-secondary lead">Различные элементы ввода в современном дизайне</p>
+    </div>
+
+    <!-- Секция 1: Форма с изображениями в ряд -->
+    <div class="card card-hover border-0 shadow-sm p-4 mb-5">
+        <div class="row g-4 align-items-center">
+            <!-- Изображения в ряд -->
+            <div class="col-md-6">
+                <div class="row g-3">
+                    <div class="col-4">
+                        <div class="rounded-4 bg-primary bg-opacity-10 d-flex align-items-center justify-content-center" style="height: 120px;">
+                            <i class="bi bi-palette fs-1 text-primary"></i>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="rounded-4 bg-success bg-opacity-10 d-flex align-items-center justify-content-center" style="height: 120px;">
+                            <i class="bi bi-star-fill fs-1 text-success"></i>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="rounded-4 bg-warning bg-opacity-10 d-flex align-items-center justify-content-center" style="height: 120px;">
+                            <i class="bi bi-heart-fill fs-1 text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Форма -->
+            <div class="col-md-6">
+                <h5 class="fw-bold mb-3">Настройки профиля</h5>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Имя пользователя</label>
+                        <input type="text" class="form-control rounded-3" placeholder="Введите имя">
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <label class="form-label small fw-bold text-muted">Возраст</label>
+                            <input type="number" class="form-control rounded-3" placeholder="18" min="1" max="100">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label small fw-bold text-muted">Уровень</label>
+                            <select class="form-select rounded-3">
+                                <option>Начальный</option>
+                                <option>Средний</option>
+                                <option>Продвинутый</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция 2: Форма с выбором цветов и radio -->
+    <div class="row g-4 mb-5">
+        <div class="col-lg-8">
+            <div class="card card-hover border-0 shadow-sm p-4 h-100">
+                <h5 class="fw-bold mb-4">Выбор темы оформления</h5>
+                
+                <!-- Выбор цвета -->
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Основной цвет интерфейса</label>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="colorTheme" id="blue" checked>
+                            <label class="form-check-label d-flex align-items-center gap-2" for="blue">
+                                <span class="rounded-circle" style="width: 20px; height: 20px; background: #3b82f6;"></span>
+                                Синий
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="colorTheme" id="green">
+                            <label class="form-check-label d-flex align-items-center gap-2" for="green">
+                                <span class="rounded-circle" style="width: 20px; height: 20px; background: #10b981;"></span>
+                                Зеленый
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="colorTheme" id="purple">
+                            <label class="form-check-label d-flex align-items-center gap-2" for="purple">
+                                <span class="rounded-circle" style="width: 20px; height: 20px; background: #8b5cf6;"></span>
+                                Фиолетовый
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Checkbox группа -->
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Дополнительные опции</label>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="interest-checkbox-card">
+                                <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                    <input type="checkbox" class="form-check-input mt-0">
+                                    <span>Темная тема</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="interest-checkbox-card">
+                                <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                    <input type="checkbox" class="form-check-input mt-0" checked>
+                                    <span>Анимации</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="interest-checkbox-card">
+                                <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                    <input type="checkbox" class="form-check-input mt-0">
+                                    <span>Уведомления</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="interest-checkbox-card">
+                                <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                    <input type="checkbox" class="form-check-input mt-0" checked>
+                                    <span>Статистика</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Высокое изображение -->
+        <div class="col-lg-4">
+            <div class="rounded-4 overflow-hidden bg-gradient h-100 d-flex align-items-center justify-content-center" 
+                 style="background: linear-gradient(135deg, #0f172a 0%, #334155 100%); min-height: 300px;">
+                <div class="text-center text-white p-4">
+                    <i class="bi bi-brush fs-1 mb-3 opacity-75"></i>
+                    <h5 class="fw-bold">Визуальные настройки</h5>
+                    <p class="small opacity-75">Настройте внешний вид под свои предпочтения</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция 3: Форма с диапазонами и текстовой областью -->
+    <div class="row g-4 mb-5">
+        <div class="col-lg-6">
+            <!-- Широкое изображение -->
+            <div class="rounded-4 overflow-hidden mb-4" style="height: 200px; background: linear-gradient(90deg, #f0f9ff 0%, #e0f2fe 100%);">
+                <div class="h-100 d-flex align-items-center justify-content-center">
+                    <div class="text-center">
+                        <i class="bi bi-sliders fs-1 text-primary opacity-50"></i>
+                        <p class="text-muted mt-2 small">Настройка параметров</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Форма с диапазонами -->
+            <div class="card card-hover border-0 shadow-sm p-4">
+                <h5 class="fw-bold mb-4">Регулировка параметров</h5>
+                
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted d-flex justify-content-between">
+                        <span>Яркость</span>
+                        <span id="brightnessValue">75%</span>
+                    </label>
+                    <input type="range" class="form-range" min="0" max="100" value="75" id="brightnessRange">
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted d-flex justify-content-between">
+                        <span>Контрастность</span>
+                        <span id="contrastValue">60%</span>
+                    </label>
+                    <input type="range" class="form-range" min="0" max="100" value="60" id="contrastRange">
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted d-flex justify-content-between">
+                        <span>Насыщенность</span>
+                        <span id="saturationValue">80%</span>
+                    </label>
+                    <input type="range" class="form-range" min="0" max="100" value="80" id="saturationRange">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card card-hover border-0 shadow-sm p-4 h-100">
+                <h5 class="fw-bold mb-4">Обратная связь</h5>
+                
+                <!-- Текстовая область -->
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Ваш комментарий</label>
+                    <textarea class="form-control rounded-3" rows="6" placeholder="Напишите ваши предложения или замечания..."></textarea>
+                </div>
+
+                <!-- Выбор категории -->
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Категория обращения</label>
+                    <select class="form-select form-select-lg-custom">
+                        <option>Предложение по улучшению</option>
+                        <option>Сообщение об ошибке</option>
+                        <option>Вопрос по функционалу</option>
+                        <option>Другое</option>
+                    </select>
+                </div>
+
+                <!-- Приоритет -->
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-muted">Приоритет</label>
+                    <div class="d-flex gap-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="priority" id="low">
+                            <label class="form-check-label" for="low">
+                                <span class="badge bg-secondary">Низкий</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="priority" id="medium" checked>
+                            <label class="form-check-label" for="medium">
+                                <span class="badge bg-warning">Средний</span>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="priority" id="high">
+                            <label class="form-check-label" for="high">
+                                <span class="badge bg-danger">Высокий</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Секция 4: Форма с сеткой изображений -->
+    <div class="card card-hover border-0 shadow-sm p-4">
+        <h5 class="fw-bold mb-4">Выбор шаблона</h5>
+        
+        <div class="row g-4 mb-4">
+            <!-- Изображения-шаблоны -->
+            <div class="col-md-3 col-6">
+                <div class="border rounded-4 p-3 text-center cursor-pointer hover-primary" style="height: 150px;">
+                    <div class="rounded-3 bg-light d-flex align-items-center justify-content-center mb-2" style="height: 80px;">
+                        <i class="bi bi-layout-text-sidebar text-primary fs-3"></i>
+                    </div>
+                    <small class="fw-bold">Боковая панель</small>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="border rounded-4 p-3 text-center cursor-pointer hover-primary" style="height: 150px;">
+                    <div class="rounded-3 bg-light d-flex align-items-center justify-content-center mb-2" style="height: 80px;">
+                        <i class="bi bi-layout-three-columns text-success fs-3"></i>
+                    </div>
+                    <small class="fw-bold">Три колонки</small>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="border rounded-4 p-3 text-center cursor-pointer hover-primary" style="height: 150px;">
+                    <div class="rounded-3 bg-light d-flex align-items-center justify-content-center mb-2" style="height: 80px;">
+                        <i class="bi bi-layout-sidebar-inset-reverse text-warning fs-3"></i>
+                    </div>
+                    <small class="fw-bold">Центральный блок</small>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="border rounded-4 p-3 text-center cursor-pointer hover-primary" style="height: 150px;">
+                    <div class="rounded-3 bg-light d-flex align-items-center justify-content-center mb-2" style="height: 80px;">
+                        <i class="bi bi-layout-wtf text-danger fs-3"></i>
+                    </div>
+                    <small class="fw-bold">Свободная форма</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Форма под изображениями -->
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label small fw-bold text-muted">Количество колонок</label>
+                <div class="input-group">
+                    <button class="btn btn-outline-secondary" type="button">-</button>
+                    <input type="number" class="form-control text-center" value="3" min="1" max="6">
+                    <button class="btn btn-outline-secondary" type="button">+</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label small fw-bold text-muted">Отступ между элементами</label>
+                <input type="number" class="form-control" value="20" min="0" max="100">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label small fw-bold text-muted">Выравнивание</label>
+                <select class="form-select">
+                    <option>По левому краю</option>
+                    <option>По центру</option>
+                    <option>По правому краю</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопки действий -->
+    <div class="d-flex justify-content-center gap-3 mt-5 pt-4">
+        <button class="btn btn-primary-custom btn-pill px-5">
+            <i class="bi bi-check-circle me-2"></i>Сохранить все настройки
+        </button>
+        <button class="btn btn-white border btn-pill px-5">
+            <i class="bi bi-arrow-clockwise me-2"></i>Сбросить к default
+        </button>
+    </div>
+</div>
+
+<script>
+    // Обновление значений диапазонов
+    document.getElementById('brightnessRange').addEventListener('input', function() {
+        document.getElementById('brightnessValue').textContent = this.value + '%';
+    });
+    
+    document.getElementById('contrastRange').addEventListener('input', function() {
+        document.getElementById('contrastValue').textContent = this.value + '%';
+    });
+    
+    document.getElementById('saturationRange').addEventListener('input', function() {
+        document.getElementById('saturationValue').textContent = this.value + '%';
+    });
+
+    // Взаимодействие с выбором шаблонов
+    document.querySelectorAll('.cursor-pointer.hover-primary').forEach(item => {
+        item.addEventListener('click', function() {
+            document.querySelectorAll('.cursor-pointer.hover-primary').forEach(el => {
+                el.classList.remove('border-primary', 'border-2');
+            });
+            this.classList.add('border-primary', 'border-2');
+        });
+    });
+</script>
+
+<style>
+    .cursor-pointer {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .hover-primary:hover {
+        border-color: var(--color-accent) !important;
+        transform: translateY(-2px);
+    }
+    
+    .form-range::-webkit-slider-thumb {
+        background-color: var(--color-accent);
+    }
+    
+    .form-range::-moz-range-thumb {
+        background-color: var(--color-accent);
+    }
+</style>
+{% endblock %}

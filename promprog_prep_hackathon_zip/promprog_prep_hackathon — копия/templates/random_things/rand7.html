@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+{% block title %}UI Формы и элементы{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+        <h1 class="display-title mb-3">UI Компоненты форм</h1>
+        <p class="text-secondary lead">Демонстрация различных полей ввода и кнопок в едином стиле</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- ФОРМА 1: Простая с текстовыми полями -->
+        <div class="col-lg-6">
+            <div class="card card-hover p-4 border-0 shadow-sm h-100">
+                <div class="d-flex align-items-center gap-2 mb-4">
+                    <div class="feature-icon">
+                        <i class="bi bi-input-cursor-text"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0">Текст и числа</h4>
+                </div>
+                
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Имя пользователя</label>
+                        <input type="text" class="form-control rounded-3 py-2 border-light" placeholder="Введите ваше имя">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Описание профиля</label>
+                        <textarea class="form-control rounded-3 border-light" rows="3" placeholder="Расскажите о себе..."></textarea>
+                    </div>
+                    
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Возраст</label>
+                            <input type="number" class="form-control rounded-3 border-light" min="0" max="120" value="25">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Приоритет (1-10)</label>
+                            <input type="range" class="form-range" min="1" max="10" value="7">
+                            <div class="text-center small text-muted">Значение: <span id="rangeValue">7</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button type="button" class="btn btn-primary-custom btn-pill px-4">Сохранить</button>
+                        <button type="button" class="btn btn-white border btn-pill px-4">Отмена</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary btn-pill">Маленькая</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ФОРМА 2: Выборы и переключатели -->
+        <div class="col-lg-6">
+            <div class="card card-hover p-4 border-0 shadow-sm h-100">
+                <div class="d-flex align-items-center gap-2 mb-4">
+                    <div class="feature-icon bg-warning bg-opacity-10 text-warning">
+                        <i class="bi bi-toggle-on"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0">Выбор и переключатели</h4>
+                </div>
+                
+                <form>
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted d-block">Категория</label>
+                        <div class="d-flex flex-wrap gap-2">
+                            <div class="interest-checkbox-card">
+                                <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="category" class="form-check-input mt-0" checked>
+                                    <span class="small">Разработка</span>
+                                </label>
+                            </div>
+                            <div class="interest-checkbox-card">
+                                <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="category" class="form-check-input mt-0">
+                                    <span class="small">Дизайн</span>
+                                </label>
+                            </div>
+                            <div class="interest-checkbox-card">
+                                <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="category" class="form-check-input mt-0">
+                                    <span class="small">Маркетинг</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Навыки</label>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <div class="form-check-custom">
+                                    <label class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" class="form-check-input" checked>
+                                        <span>HTML/CSS</span>
+                                    </label>
+                                    <span class="count-badge">42</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-custom">
+                                    <label class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" class="form-check-input">
+                                        <span>JavaScript</span>
+                                    </label>
+                                    <span class="count-badge">28</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-custom">
+                                    <label class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" class="form-check-input">
+                                        <span>Python</span>
+                                    </label>
+                                    <span class="count-badge">35</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check-custom">
+                                    <label class="d-flex align-items-center gap-2">
+                                        <input type="checkbox" class="form-check-input" checked>
+                                        <span>Figma</span>
+                                    </label>
+                                    <span class="count-badge">19</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Цвет темы</label>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button type="button" class="btn rounded-circle p-3" style="background-color: #3b82f6; border: 2px solid #3b82f6;"></button>
+                            <button type="button" class="btn rounded-circle p-3 border" style="background-color: #10b981;"></button>
+                            <button type="button" class="btn rounded-circle p-3 border" style="background-color: #8b5cf6;"></button>
+                            <button type="button" class="btn rounded-circle p-3 border" style="background-color: #f59e0b;"></button>
+                            <button type="button" class="btn rounded-circle p-3 border" style="background-color: #ef4444;"></button>
+                            <button type="button" class="btn rounded-circle p-3 border" style="background-color: #000000;"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-dark-pricing flex-grow-1">Темная кнопка</button>
+                        <button type="button" class="btn btn-success btn-pill px-4">Готово</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ФОРМА 3: Специальные поля -->
+        <div class="col-lg-8">
+            <div class="card card-hover p-4 border-0 shadow-sm">
+                <div class="d-flex align-items-center gap-2 mb-4">
+                    <div class="feature-icon bg-info bg-opacity-10 text-info">
+                        <i class="bi bi-sliders"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0">Специальные поля</h4>
+                </div>
+                
+                <form class="row g-4">
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-muted">Выпадающий список</label>
+                        <select class="form-select form-select-lg-custom">
+                            <option selected>Выберите опцию</option>
+                            <option>Опция 1</option>
+                            <option>Опция 2</option>
+                            <option>Опция 3</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-muted">Выбор даты</label>
+                        <input type="date" class="form-control rounded-3 border-light" value="2024-05-15">
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-muted">Выбор времени</label>
+                        <input type="time" class="form-control rounded-3 border-light" value="14:30">
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-muted">Выбор цвета</label>
+                        <div class="input-group">
+                            <input type="color" class="form-control form-control-color border-light" value="#3b82f6" title="Выберите цвет">
+                            <span class="input-group-text rounded-3 bg-light">#3b82f6</span>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12">
+                        <label class="form-label small fw-bold text-muted">Файл для загрузки</label>
+                        <div class="input-group">
+                            <input type="file" class="form-control rounded-3 border-light" id="customFile">
+                            <label class="input-group-text rounded-3 bg-light" for="customFile">Обзор</label>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between gap-3">
+                            <button type="button" class="btn btn-outline-primary btn-pill px-5 py-2">Кнопка с обводкой</button>
+                            <button type="button" class="btn btn-primary-custom btn-pill px-5 py-2">Основная</button>
+                            <button type="button" class="btn btn-white border shadow-sm btn-pill px-4">Белая</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ФОРМА 4: Компактные элементы -->
+        <div class="col-lg-4">
+            <div class="card card-hover p-4 border-0 shadow-sm h-100">
+                <div class="d-flex align-items-center gap-2 mb-4">
+                    <div class="feature-icon bg-danger bg-opacity-10 text-danger">
+                        <i class="bi bi-gear"></i>
+                    </div>
+                    <h4 class="fw-bold mb-0">Настройки</h4>
+                </div>
+                
+                <form>
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Уровень сложности</label>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="small text-muted">Низкий</span>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                            </div>
+                            <span class="small text-muted">Высокий</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Уведомления</label>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notif1" checked>
+                                <label class="form-check-label small" for="notif1">Электронная почта</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notif2">
+                                <label class="form-check-label small" for="notif2">Push-уведомления</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notif3" checked>
+                                <label class="form-check-label small" for="notif3">SMS</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Количество элементов</label>
+                        <div class="d-flex align-items-center gap-3">
+                            <button type="button" class="btn btn-outline-primary rounded-circle p-0 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">-</button>
+                            <span class="fw-bold fs-5">5</span>
+                            <button type="button" class="btn btn-outline-primary rounded-circle p-0 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-primary-custom btn-pill py-3 fw-bold">Большая кнопка</button>
+                        <button type="button" class="btn btn-sm btn-white border btn-pill">Очень маленькая</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Дополнительная информация -->
+    <div class="text-center mt-5 pt-4 border-top">
+        <p class="text-muted small">Это демонстрационная страница с различными элементами форм. Все стили взяты из существующего CSS файла.</p>
+        <div class="d-flex justify-content-center gap-2 flex-wrap">
+            <span class="badge tag-dev">Dev</span>
+            <span class="badge tag-design">Design</span>
+            <span class="badge tag-marketing">UI</span>
+            <span class="badge tag-finance">Forms</span>
+            <span class="badge tag-hr">Components</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Минимальные дополнительные стили, использующие существующие переменные */
+    .form-control-color {
+        height: 44px;
+        padding: 0.375rem;
+    }
+    
+    .form-check-input:checked {
+        background-color: var(--color-accent);
+        border-color: var(--color-accent);
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+        background-color: var(--color-accent);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Обновление значения range
+        const rangeInput = document.querySelector('input[type="range"]');
+        const rangeValue = document.getElementById('rangeValue');
+        
+        if (rangeInput && rangeValue) {
+            rangeInput.addEventListener('input', function() {
+                rangeValue.textContent = this.value;
+            });
+        }
+        
+        // Обработка выбора цвета
+        const colorInputs = document.querySelectorAll('.btn.rounded-circle');
+        colorInputs.forEach(btn => {
+            btn.addEventListener('click', function() {
+                colorInputs.forEach(b => b.style.borderWidth = '1px');
+                this.style.borderWidth = '3px';
+            });
+        });
+    });
+</script>
+{% endblock %}

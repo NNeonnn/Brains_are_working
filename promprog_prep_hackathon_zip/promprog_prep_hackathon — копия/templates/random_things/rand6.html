@@ -1,0 +1,377 @@
+[file name]: forms.html
+[file content begin]
+{% extends "base.html" %}
+{% block title %}UI Формы и контролы{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-2 mb-3">
+            Демо форм
+        </span>
+        <h1 class="display-title mb-3">
+            Разнообразные <span class="text-gradient">элементы ввода</span>
+        </h1>
+        <p class="text-secondary lead">Демонстрация различных UI-компонентов в стиле системы</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- КОЛОНКА 1: Основные контролы -->
+        <div class="col-lg-6">
+            <!-- Карточка с ползунками -->
+            <div class="card card-hover border-0 shadow-sm p-4 mb-4">
+                <h5 class="fw-bold mb-4">Ползунки (Range Sliders)</h5>
+                
+                <!-- Простой горизонтальный -->
+                <div class="mb-4">
+                    <label class="form-label d-flex justify-content-between">
+                        <span>Простой ползунок</span>
+                        <span id="simpleValue" class="text-primary fw-bold">50</span>
+                    </label>
+                    <input type="range" class="form-range" min="0" max="100" value="50" id="simpleRange">
+                </div>
+
+                <!-- Стилизованный ползунок -->
+                <div class="mb-4">
+                    <label class="form-label d-flex justify-content-between">
+                        <span>Стилизованный (primary)</span>
+                        <span id="styledValue" class="text-primary fw-bold">75</span>
+                    </label>
+                    <input type="range" class="form-range custom-slider" min="0" max="100" value="75" id="styledRange">
+                </div>
+
+                <!-- Дискретный (с шагами) -->
+                <div class="mb-4">
+                    <label class="form-label d-flex justify-content-between">
+                        <span>Дискретный (шаг 10)</span>
+                        <span id="stepValue" class="text-primary fw-bold">30</span>
+                    </label>
+                    <input type="range" class="form-range" min="0" max="100" step="10" value="30" id="stepRange">
+                    <div class="d-flex justify-content-between mt-1 small text-muted">
+                        <span>0</span>
+                        <span>25</span>
+                        <span>50</span>
+                        <span>75</span>
+                        <span>100</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вертикальные ползунки -->
+            <div class="card card-hover border-0 shadow-sm p-4">
+                <h5 class="fw-bold mb-4">Вертикальные ползунки</h5>
+                <div class="row g-4">
+                    <div class="col-4 text-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <label class="small text-muted mb-2">Высота</label>
+                            <input type="range" class="form-range vertical-slider" min="0" max="100" value="60" id="vertical1">
+                            <span class="mt-2 fw-bold" id="verticalValue1">60</span>
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <label class="small text-muted mb-2">Насыщенность</label>
+                            <input type="range" class="form-range vertical-slider custom-slider" min="0" max="100" value="80" id="vertical2">
+                            <span class="mt-2 fw-bold" id="verticalValue2">80</span>
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <div class="d-flex flex-column align-items-center">
+                            <label class="small text-muted mb-2">Прозрачность</label>
+                            <input type="range" class="form-range vertical-slider" min="0" max="100" value="40" id="vertical3">
+                            <span class="mt-2 fw-bold" id="verticalValue3">40</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- КОЛОНКА 2: Другие элементы -->
+        <div class="col-lg-6">
+            <!-- Выбор цвета и числа -->
+            <div class="card card-hover border-0 shadow-sm p-4 mb-4">
+                <h5 class="fw-bold mb-4">Выбор цвета и чисел</h5>
+                
+                <!-- Выбор цвета -->
+                <div class="mb-4">
+                    <label class="form-label">Выберите цвет</label>
+                    <div class="d-flex gap-3">
+                        <input type="color" class="form-control form-control-color border rounded-3" value="#3b82f6" title="Выберите цвет">
+                        <div class="flex-grow-1">
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border">HEX</span>
+                                <input type="text" class="form-control border" value="#3b82f6" id="colorHex">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ввод чисел -->
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Количество</label>
+                        <input type="number" class="form-control rounded-3" min="1" max="100" value="10">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Диапазон</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control rounded-3" placeholder="От" value="1">
+                            <span class="input-group-text bg-light border">—</span>
+                            <input type="number" class="form-control rounded-3" placeholder="До" value="100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Radio и Checkbox -->
+            <div class="card card-hover border-0 shadow-sm p-4 mb-4">
+                <h5 class="fw-bold mb-4">Переключатели и флажки</h5>
+                
+                <div class="row">
+                    <!-- Radio кнопки -->
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-muted">Тип элемента</label>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="elementType" id="type1" checked>
+                                <label class="form-check-label" for="type1">Основной</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="elementType" id="type2">
+                                <label class="form-check-label" for="type2">Второстепенный</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="elementType" id="type3">
+                                <label class="form-check-label" for="type3">Дополнительный</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkbox -->
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold text-muted">Свойства</label>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="prop1" checked>
+                                <label class="form-check-label" for="prop1">Активный</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="prop2">
+                                <label class="form-check-label" for="prop2">Видимый</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="prop3" checked>
+                                <label class="form-check-label" for="prop3">Анимированный</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Текстовые поля -->
+            <div class="card card-hover border-0 shadow-sm p-4">
+                <h5 class="fw-bold mb-4">Текстовые поля</h5>
+                
+                <div class="mb-3">
+                    <label class="form-label">Однострочный текст</label>
+                    <input type="text" class="form-control rounded-3" placeholder="Введите текст...">
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Многострочный текст</label>
+                    <textarea class="form-control rounded-3" rows="3" placeholder="Введите длинный текст..."></textarea>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Поиск</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border"><i class="bi bi-search"></i></span>
+                        <input type="search" class="form-control border" placeholder="Поиск...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ДОПОЛНИТЕЛЬНАЯ СЕКЦИЯ: Группа ползунков -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card card-hover border-0 shadow-sm p-4">
+                <h5 class="fw-bold mb-4">Группа связанных ползунков</h5>
+                <p class="text-muted small mb-4">Изменение одного влияет на другие</p>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <label class="form-label d-flex justify-content-between">
+                            <span>Красный (R)</span>
+                            <span id="redValue" class="text-danger fw-bold">120</span>
+                        </label>
+                        <input type="range" class="form-range red-slider" min="0" max="255" value="120" id="redSlider">
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label d-flex justify-content-between">
+                            <span>Зеленый (G)</span>
+                            <span id="greenValue" class="text-success fw-bold">80</span>
+                        </label>
+                        <input type="range" class="form-range green-slider" min="0" max="255" value="80" id="greenSlider">
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label d-flex justify-content-between">
+                            <span>Синий (B)</span>
+                            <span id="blueValue" class="text-primary fw-bold">200</span>
+                        </label>
+                        <input type="range" class="form-range blue-slider" min="0" max="255" value="200" id="blueSlider">
+                    </div>
+                </div>
+                
+                <!-- Превью цвета -->
+                <div class="mt-4 pt-4 border-top">
+                    <div class="d-flex align-items-center gap-3">
+                        <div id="colorPreview" class="rounded-3 border" style="width: 60px; height: 60px; background-color: rgb(120, 80, 200);"></div>
+                        <div>
+                            <h6 class="fw-bold mb-1">Результирующий цвет</h6>
+                            <p class="text-muted small mb-0" id="rgbValue">RGB(120, 80, 200)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Стили для ползунков */
+    .custom-slider::-webkit-slider-thumb {
+        background-color: var(--color-accent);
+        border: 2px solid white;
+        box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
+    }
+    
+    .custom-slider::-moz-range-thumb {
+        background-color: var(--color-accent);
+        border: 2px solid white;
+        box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
+    }
+    
+    .vertical-slider {
+        writing-mode: bt-lr; /* IE */
+        -webkit-appearance: slider-vertical;
+        width: 8px;
+        height: 150px;
+        padding: 0 5px;
+    }
+    
+    /* Цветные ползунки для RGB */
+    .red-slider::-webkit-slider-thumb {
+        background-color: #dc2626;
+    }
+    
+    .green-slider::-webkit-slider-thumb {
+        background-color: #16a34a;
+    }
+    
+    .blue-slider::-webkit-slider-thumb {
+        background-color: #2563eb;
+    }
+    
+    /* Для Firefox */
+    .red-slider::-moz-range-thumb {
+        background-color: #dc2626;
+    }
+    
+    .green-slider::-moz-range-thumb {
+        background-color: #16a34a;
+    }
+    
+    .blue-slider::-moz-range-thumb {
+        background-color: #2563eb;
+    }
+</style>
+
+<script>
+    // Обработчики для обновления значений ползунков
+    document.addEventListener('DOMContentLoaded', function() {
+        // Простые горизонтальные ползунки
+        const simpleRange = document.getElementById('simpleRange');
+        const simpleValue = document.getElementById('simpleValue');
+        simpleRange.addEventListener('input', function() {
+            simpleValue.textContent = this.value;
+        });
+        
+        const styledRange = document.getElementById('styledRange');
+        const styledValue = document.getElementById('styledValue');
+        styledRange.addEventListener('input', function() {
+            styledValue.textContent = this.value;
+        });
+        
+        const stepRange = document.getElementById('stepRange');
+        const stepValue = document.getElementById('stepValue');
+        stepRange.addEventListener('input', function() {
+            stepValue.textContent = this.value;
+        });
+        
+        // Вертикальные ползунки
+        const vertical1 = document.getElementById('vertical1');
+        const verticalValue1 = document.getElementById('verticalValue1');
+        vertical1.addEventListener('input', function() {
+            verticalValue1.textContent = this.value;
+        });
+        
+        const vertical2 = document.getElementById('vertical2');
+        const verticalValue2 = document.getElementById('verticalValue2');
+        vertical2.addEventListener('input', function() {
+            verticalValue2.textContent = this.value;
+        });
+        
+        const vertical3 = document.getElementById('vertical3');
+        const verticalValue3 = document.getElementById('verticalValue3');
+        vertical3.addEventListener('input', function() {
+            verticalValue3.textContent = this.value;
+        });
+        
+        // Выбор цвета
+        const colorInput = document.querySelector('input[type="color"]');
+        const colorHex = document.getElementById('colorHex');
+        colorInput.addEventListener('input', function() {
+            colorHex.value = this.value;
+        });
+        
+        colorHex.addEventListener('input', function() {
+            if (this.value.match(/^#[0-9A-F]{6}$/i)) {
+                colorInput.value = this.value;
+            }
+        });
+        
+        // RGB ползунки
+        const redSlider = document.getElementById('redSlider');
+        const greenSlider = document.getElementById('greenSlider');
+        const blueSlider = document.getElementById('blueSlider');
+        const redValue = document.getElementById('redValue');
+        const greenValue = document.getElementById('greenValue');
+        const blueValue = document.getElementById('blueValue');
+        const colorPreview = document.getElementById('colorPreview');
+        const rgbValue = document.getElementById('rgbValue');
+        
+        function updateRGB() {
+            const r = redSlider.value;
+            const g = greenSlider.value;
+            const b = blueSlider.value;
+            
+            redValue.textContent = r;
+            greenValue.textContent = g;
+            blueValue.textContent = b;
+            
+            colorPreview.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+            rgbValue.textContent = `RGB(${r}, ${g}, ${b})`;
+        }
+        
+        redSlider.addEventListener('input', updateRGB);
+        greenSlider.addEventListener('input', updateRGB);
+        blueSlider.addEventListener('input', updateRGB);
+    });
+</script>
+{% endblock %}
+[file content end]

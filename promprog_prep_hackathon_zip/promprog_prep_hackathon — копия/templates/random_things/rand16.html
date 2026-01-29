@@ -1,0 +1,424 @@
+[file name]: forms.html
+[file content begin]
+{% extends "base.html" %}
+{% block title %}UI Формы{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <!-- Заголовок -->
+            <div class="text-center mb-5">
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill px-3 py-2 mb-3">
+                    Дизайн-система
+                </span>
+                <h1 class="display-title display-4 mb-3">
+                    UI <span class="text-gradient">Формы</span>
+                </h1>
+                <p class="text-secondary lead mb-5">
+                    Различные способы оформления полей ввода, переключателей и кнопок.
+                </p>
+            </div>
+
+            <!-- Секция 1: Радиокнопки (3 стиля) -->
+            <div class="card border-0 shadow-sm mb-5 p-4">
+                <h3 class="fw-bold mb-4">1. Радиокнопки</h3>
+                
+                <!-- Стиль 1: Карточки -->
+                <div class="mb-5">
+                    <h5 class="fw-bold text-muted mb-3">Карточный стиль</h5>
+                    <div class="row g-3">
+                        {% for i in range(1, 4) %}
+                        <div class="col-md-4">
+                            <label class="radio-card w-100 h-100">
+                                <input type="radio" name="cardRadio" class="d-none" {% if loop.first %}checked{% endif %}>
+                                <div class="card border rounded-3 p-3 text-center h-100">
+                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 50px; height: 50px;">
+                                        <i class="bi bi-star-fill fs-4"></i>
+                                    </div>
+                                    <h6 class="fw-bold mb-1">Опция {{ i }}</h6>
+                                    <p class="text-muted small mb-0">Описание варианта выбора</p>
+                                </div>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Стиль 2: Цветные кнопки -->
+                <div class="mb-5">
+                    <h5 class="fw-bold text-muted mb-3">Цветные переключатели</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% set colors = ['primary', 'success', 'danger', 'warning', 'info'] %}
+                        {% for color in colors %}
+                        <label class="radio-color">
+                            <input type="radio" name="colorRadio" class="d-none" {% if loop.first %}checked{% endif %}>
+                            <span class="badge bg-{{ color }} bg-opacity-10 text-{{ color }} border border-{{ color }} border-opacity-25 rounded-pill px-4 py-2">
+                                <i class="bi bi-circle-fill me-2 small"></i>{{ color|capitalize }}
+                            </span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Стиль 3: Слайдер-переключатель -->
+                <div>
+                    <h5 class="fw-bold text-muted mb-3">Интерактивный слайдер</h5>
+                    <div class="d-flex align-items-center bg-light rounded-3 p-3">
+                        <div class="form-check form-switch me-3">
+                            <input class="form-check-input" type="radio" name="slideRadio" id="slide1" checked>
+                            <label class="form-check-label fw-bold" for="slide1">Базовый</label>
+                        </div>
+                        <div class="form-check form-switch me-3">
+                            <input class="form-check-input" type="radio" name="slideRadio" id="slide2">
+                            <label class="form-check-label fw-bold" for="slide2">Продвинутый</label>
+                        </div>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="radio" name="slideRadio" id="slide3">
+                            <label class="form-check-label fw-bold" for="slide3">Профессиональный</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Секция 2: Чекбоксы (3 стиля) -->
+            <div class="card border-0 shadow-sm mb-5 p-4">
+                <h3 class="fw-bold mb-4">2. Чекбоксы</h3>
+                
+                <!-- Стиль 1: Список с иконками -->
+                <div class="mb-5">
+                    <h5 class="fw-bold text-muted mb-3">Список с иконками</h5>
+                    <div class="row g-3">
+                        {% for i in range(1, 5) %}
+                        <div class="col-md-6">
+                            <label class="checkbox-icon d-flex align-items-center p-3 border rounded-3">
+                                <div class="form-check me-3">
+                                    <input class="form-check-input" type="checkbox" checked>
+                                </div>
+                                <div class="me-3">
+                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="bi bi-check2-circle"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Элемент {{ i }}</h6>
+                                    <p class="text-muted small mb-0">Дополнительное описание</p>
+                                </div>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Стиль 2: Цветные теги -->
+                <div class="mb-5">
+                    <h5 class="fw-bold text-muted mb-3">Цветные теги</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                        {% set tags = ['Дизайн', 'Разработка', 'Маркетинг', 'Аналитика', 'Тестирование'] %}
+                        {% for tag in tags %}
+                        <label class="checkbox-tag">
+                            <input type="checkbox" class="d-none" checked>
+                            <span class="badge bg-light text-dark border rounded-pill px-3 py-2">
+                                {{ tag }}
+                            </span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Стиль 3: Таблица -->
+                <div>
+                    <h5 class="fw-bold text-muted mb-3">Табличный выбор</h5>
+                    <div class="table-modern-container">
+                        <table class="table-modern">
+                            <thead>
+                                <tr>
+                                    <th class="ps-4">Выбор</th>
+                                    <th>Наименование</th>
+                                    <th>Статус</th>
+                                    <th class="pe-4">Приоритет</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in range(1, 4) %}
+                                <tr>
+                                    <td class="ps-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox">
+                                        </div>
+                                    </td>
+                                    <td>Запись #{{ i }}</td>
+                                    <td>
+                                        <span class="badge bg-success bg-opacity-10 text-success rounded-pill">Активно</span>
+                                    </td>
+                                    <td class="pe-4">
+                                        <select class="form-select form-select-sm border-0 bg-light rounded-pill w-auto">
+                                            <option>Высокий</option>
+                                            <option>Средний</option>
+                                            <option>Низкий</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Секция 3: Поля ввода -->
+            <div class="card border-0 shadow-sm mb-5 p-4">
+                <h3 class="fw-bold mb-4">3. Поля ввода</h3>
+                
+                <div class="row g-4">
+                    <!-- Текстовые поля -->
+                    <div class="col-md-6">
+                        <h5 class="fw-bold text-muted mb-3">Текстовые поля</h5>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Обычное поле</label>
+                            <input type="text" class="form-control rounded-3" placeholder="Введите текст">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">С иконкой</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-0">
+                                    <i class="bi bi-search text-muted"></i>
+                                </span>
+                                <input type="text" class="form-control border-start-0 rounded-3" placeholder="Поиск...">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Многострочный текст</label>
+                            <textarea class="form-control rounded-3" rows="3" placeholder="Введите подробное описание..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Числа и цвета -->
+                    <div class="col-md-6">
+                        <h5 class="fw-bold text-muted mb-3">Числа и цвета</h5>
+                        
+                        <div class="row g-3 mb-3">
+                            <div class="col-6">
+                                <label class="form-label small fw-bold text-muted">Числовое поле</label>
+                                <input type="number" class="form-control rounded-3" value="50" min="0" max="100">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small fw-bold text-muted">Ползунок</label>
+                                <input type="range" class="form-range" min="0" max="100" value="50">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Выбор цвета</label>
+                            <div class="d-flex gap-2">
+                                {% set colorOptions = ['#3b82f6', '#10b981', '#ef4444', '#f59e0b', '#8b5cf6'] %}
+                                {% for color in colorOptions %}
+                                <label class="color-option">
+                                    <input type="radio" name="colorSelect" class="d-none" {% if loop.first %}checked{% endif %}>
+                                    <span class="color-preview rounded-3" style="background-color: {{ color }}; width: 40px; height: 40px;"></span>
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold text-muted">Палитра цветов</label>
+                            <input type="color" class="form-control form-control-color rounded-3 border" value="#3b82f6" title="Выберите цвет">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Секция 4: Кнопки и действия -->
+            <div class="card border-0 shadow-sm p-4">
+                <h3 class="fw-bold mb-4">4. Кнопки и действия</h3>
+                
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <h5 class="fw-bold text-muted mb-3">Типы кнопок</h5>
+                        
+                        <div class="d-flex flex-wrap gap-2 mb-3">
+                            <button class="btn btn-primary-custom btn-pill">Основная</button>
+                            <button class="btn btn-white border btn-pill">Вторичная</button>
+                            <button class="btn btn-outline-primary btn-pill">Контурная</button>
+                            <button class="btn btn-link text-primary">Ссылка</button>
+                        </div>
+                        
+                        <div class="d-flex flex-wrap gap-2">
+                            <button class="btn btn-success btn-pill"><i class="bi bi-check"></i> Успех</button>
+                            <button class="btn btn-warning btn-pill"><i class="bi bi-exclamation"></i> Предупреждение</button>
+                            <button class="btn btn-danger btn-pill"><i class="bi bi-x"></i> Ошибка</button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <h5 class="fw-bold text-muted mb-3">Группа кнопок</h5>
+                        
+                        <div class="btn-group w-100 mb-3" role="group">
+                            <input type="radio" class="btn-check" name="btnGroup" id="option1" checked>
+                            <label class="btn btn-outline-primary rounded-start-pill" for="option1">Опция 1</label>
+                            
+                            <input type="radio" class="btn-check" name="btnGroup" id="option2">
+                            <label class="btn btn-outline-primary" for="option2">Опция 2</label>
+                            
+                            <input type="radio" class="btn-check" name="btnGroup" id="option3">
+                            <label class="btn btn-outline-primary rounded-end-pill" for="option3">Опция 3</label>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary-custom btn-pill py-2">Большая кнопка</button>
+                            <button class="btn btn-white border btn-pill py-2">Дополнительная</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Стили для радиокнопок в виде карточек */
+    .radio-card input:checked + .card {
+        border-color: #3b82f6;
+        background-color: rgba(59, 130, 246, 0.05);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    }
+    
+    .radio-card .card {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    /* Стили для цветных радиокнопок */
+    .radio-color input:checked + span {
+        background-color: var(--color-accent) !important;
+        color: white !important;
+        border-color: var(--color-accent) !important;
+    }
+    
+    .radio-color span {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    /* Стили для чекбоксов с иконками */
+    .checkbox-icon {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .checkbox-icon:hover {
+        border-color: #3b82f6;
+        background-color: rgba(59, 130, 246, 0.05);
+    }
+    
+    .checkbox-icon input:checked ~ .form-check-input {
+        background-color: #3b82f6;
+        border-color: #3b82f6;
+    }
+    
+    /* Стили для чекбоксов-тегов */
+    .checkbox-tag input:checked + span {
+        background-color: #3b82f6 !important;
+        color: white !important;
+        border-color: #3b82f6 !important;
+    }
+    
+    .checkbox-tag span {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    /* Стили для выбора цвета */
+    .color-option input:checked + .color-preview {
+        outline: 3px solid #3b82f6;
+        outline-offset: 2px;
+        transform: scale(1.1);
+    }
+    
+    .color-preview {
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    /* Стили для переключателей */
+    .form-switch .form-check-input:checked {
+        background-color: #3b82f6;
+        border-color: #3b82f6;
+    }
+    
+    /* Стили для таблицы с чекбоксами */
+    .table-modern tbody tr:hover {
+        background-color: rgba(59, 130, 246, 0.05);
+    }
+    
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .d-flex.flex-wrap.gap-2 {
+            gap: 8px !important;
+        }
+        
+        .color-preview {
+            width: 32px !important;
+            height: 32px !important;
+        }
+    }
+</style>
+
+<script>
+    // Взаимодействие с элементами форм
+    document.addEventListener('DOMContentLoaded', function() {
+        // Радиокнопки-карточки
+        document.querySelectorAll('.radio-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const input = this.querySelector('input[type="radio"]');
+                input.checked = true;
+                
+                // Снимаем выделение с других карточек
+                document.querySelectorAll('.radio-card').forEach(other => {
+                    if (other !== this) {
+                        other.querySelector('input[type="radio"]').checked = false;
+                    }
+                });
+            });
+        });
+        
+        // Цветные радиокнопки
+        document.querySelectorAll('.radio-color').forEach(radio => {
+            radio.addEventListener('click', function() {
+                const input = this.querySelector('input[type="radio"]');
+                input.checked = true;
+            });
+        });
+        
+        // Чекбоксы-теги
+        document.querySelectorAll('.checkbox-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                const input = this.querySelector('input[type="checkbox"]');
+                input.checked = !input.checked;
+            });
+        });
+        
+        // Выбор цвета
+        document.querySelectorAll('.color-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const input = this.querySelector('input[type="radio"]');
+                input.checked = true;
+            });
+        });
+        
+        // Показ выбранных значений
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('change', function() {
+                if (this.type === 'color') {
+                    console.log('Выбран цвет:', this.value);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+[file content end]

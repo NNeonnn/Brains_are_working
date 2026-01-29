@@ -1,0 +1,267 @@
+{% extends "base.html" %}
+{% block title %}UI Формы{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Заголовок -->
+    <div class="text-center mb-5">
+        <h1 class="display-title mb-3">UI Формы</h1>
+        <p class="text-secondary">Примеры различных элементов форм с использованием существующих стилей</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- Форма 1: Личная информация -->
+        <div class="col-lg-6">
+            <div class="card card-hover p-4 border-0 shadow-sm h-100">
+                <h5 class="fw-bold mb-4">
+                    <i class="bi bi-person me-2"></i>Личная информация
+                </h5>
+                
+                <form>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Имя</label>
+                            <input type="text" class="form-control rounded-3" placeholder="Введите имя" value="Алексей">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Фамилия</label>
+                            <input type="text" class="form-control rounded-3" placeholder="Введите фамилию" value="Иванов">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Email</label>
+                        <input type="email" class="form-control rounded-3" placeholder="name@example.com" value="alex@school.ru">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Описание</label>
+                        <textarea class="form-control rounded-3" rows="3" placeholder="Расскажите о себе...">Ученик 10-А класса, увлекаюсь программированием и математикой.</textarea>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary-custom btn-pill px-4">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Форма 2: Настройки и выборы -->
+        <div class="col-lg-6">
+            <div class="card card-hover p-4 border-0 shadow-sm h-100">
+                <h5 class="fw-bold mb-4">
+                    <i class="bi bi-gear me-2"></i>Настройки параметров
+                </h5>
+                
+                <form>
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Уровень сложности</label>
+                        <div class="d-flex gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="difficulty" id="easy" checked>
+                                <label class="form-check-label" for="easy">Легкий</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="difficulty" id="medium">
+                                <label class="form-check-label" for="medium">Средний</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="difficulty" id="hard">
+                                <label class="form-check-label" for="hard">Сложный</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Количество элементов</label>
+                        <div class="d-flex align-items-center gap-3">
+                            <input type="number" class="form-control rounded-3 w-25" min="1" max="100" value="10">
+                            <span class="text-muted small">от 1 до 100</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Цвет темы</label>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <div class="interest-checkbox-card">
+                                <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                    <input type="radio" name="color" value="blue" class="form-check-input mt-0" checked>
+                                    <span class="d-flex align-items-center gap-1">
+                                        <div class="rounded-circle" style="width: 16px; height: 16px; background-color: #3b82f6;"></div>
+                                        Синий
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="interest-checkbox-card">
+                                <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                    <input type="radio" name="color" value="green" class="form-check-input mt-0">
+                                    <span class="d-flex align-items-center gap-1">
+                                        <div class="rounded-circle" style="width: 16px; height: 16px; background-color: #10b981;"></div>
+                                        Зеленый
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="interest-checkbox-card">
+                                <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                    <input type="radio" name="color" value="purple" class="form-check-input mt-0">
+                                    <span class="d-flex align-items-center gap-1">
+                                        <div class="rounded-circle" style="width: 16px; height: 16px; background-color: #8b5cf6;"></div>
+                                        Фиолетовый
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-outline-primary btn-pill px-4 me-2">Сбросить</button>
+                        <button type="button" class="btn btn-primary-custom btn-pill px-4">Применить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Форма 3: Выбор категорий и чекбоксы -->
+        <div class="col-lg-8">
+            <div class="card card-hover p-4 border-0 shadow-sm h-100">
+                <h5 class="fw-bold mb-4">
+                    <i class="bi bi-tags me-2"></i>Категории и предпочтения
+                </h5>
+                
+                <form>
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Основная категория</label>
+                            <select class="form-select form-select-lg-custom">
+                                <option selected>Выберите категорию</option>
+                                <option value="1">Программирование</option>
+                                <option value="2">Дизайн</option>
+                                <option value="3">Математика</option>
+                                <option value="4">Физика</option>
+                                <option value="5">Литература</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Приоритет</label>
+                            <select class="form-select rounded-3">
+                                <option selected>Нормальный</option>
+                                <option>Низкий</option>
+                                <option>Высокий</option>
+                                <option>Критический</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <span class="filter-group-title">Интересы</span>
+                        <div class="row g-2 mt-2">
+                            <div class="col-md-4">
+                                <div class="form-check-custom">
+                                    <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" class="form-check-input" checked>
+                                        <span>Веб-разработка</span>
+                                    </label>
+                                    <span class="count-badge">24</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check-custom">
+                                    <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" class="form-check-input">
+                                        <span>Мобильные приложения</span>
+                                    </label>
+                                    <span class="count-badge">18</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check-custom">
+                                    <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" class="form-check-input" checked>
+                                        <span>Базы данных</span>
+                                    </label>
+                                    <span class="count-badge">12</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check-custom">
+                                    <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" class="form-check-input">
+                                        <span>Искусственный интеллект</span>
+                                    </label>
+                                    <span class="count-badge">32</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-check-custom">
+                                    <label class="d-flex align-items-center gap-2 cursor-pointer">
+                                        <input type="checkbox" class="form-check-input" checked>
+                                        <span>Кибербезопасность</span>
+                                    </label>
+                                    <span class="count-badge">15</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-light border btn-pill">Выбрать все</button>
+                        <button type="button" class="btn btn-primary-custom btn-pill">Сохранить выбор</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Форма 4: Дополнительные параметры -->
+        <div class="col-lg-4">
+            <div class="card card-hover p-4 border-0 shadow-sm h-100">
+                <h5 class="fw-bold mb-4">
+                    <i class="bi bi-sliders me-2"></i>Дополнительно
+                </h5>
+                
+                <form>
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Диапазон значений</label>
+                        <div class="d-flex align-items-center gap-3">
+                            <input type="number" class="form-control rounded-3" placeholder="От" value="0">
+                            <span class="text-muted">—</span>
+                            <input type="number" class="form-control rounded-3" placeholder="До" value="100">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Автоматическое обновление</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="autoUpdate" checked>
+                            <label class="form-check-label fw-bold" for="autoUpdate">Включено</label>
+                        </div>
+                        <div class="form-text text-muted small">Обновлять данные каждые 5 минут</div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted">Уведомления</label>
+                        <div class="d-flex flex-column gap-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notifyEmail" checked>
+                                <label class="form-check-label" for="notifyEmail">По email</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notifyPush">
+                                <label class="form-check-label" for="notifyPush">Push-уведомления</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notifySMS">
+                                <label class="form-check-label" for="notifySMS">SMS</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 pt-3 border-top">
+                        <button type="button" class="btn btn-white border btn-pill w-100">Дополнительные настройки</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

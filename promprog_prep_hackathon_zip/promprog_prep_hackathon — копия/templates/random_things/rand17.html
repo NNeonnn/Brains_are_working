@@ -1,0 +1,438 @@
+[file name]: forms.html
+[file content begin]
+{% extends "base.html" %}
+{% block title %}UI Компоненты и Формы{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Заголовок -->
+    <div class="mb-5">
+        <h1 class="display-title fw-bold mb-3">UI Компоненты <span class="text-gradient">и Формы</span></h1>
+        <p class="text-secondary lead">Разнообразные элементы интерфейса, таблицы и графики для визуализации данных</p>
+    </div>
+
+    <div class="row g-4">
+        <!-- ЛЕВАЯ КОЛОНКА: Формы -->
+        <div class="col-lg-6">
+            <!-- Форма 1: Основная информация -->
+            <div class="card card-hover border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-bottom p-4">
+                    <h5 class="fw-bold mb-0">Основная информация</h5>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Имя пользователя</label>
+                            <input type="text" class="form-control rounded-3" placeholder="Введите имя">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Электронная почта</label>
+                            <input type="email" class="form-control rounded-3" placeholder="name@example.com">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Возраст</label>
+                            <input type="number" class="form-control rounded-3" placeholder="0" min="0" max="100">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Выбор цвета</label>
+                            <input type="color" class="form-control form-control-color rounded-3" value="#3b82f6" title="Выберите цвет">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Форма 2: Выбор опций -->
+            <div class="card card-hover border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-bottom p-4">
+                    <h5 class="fw-bold mb-0">Выбор параметров</h5>
+                </div>
+                <div class="card-body p-4">
+                    <!-- Radio buttons -->
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted d-block mb-3">Тип подписки:</label>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="subscription" id="free" checked>
+                                <label class="form-check-label" for="free">Бесплатный</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="subscription" id="pro">
+                                <label class="form-check-label" for="pro">Профессиональный</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="subscription" id="enterprise">
+                                <label class="form-check-label" for="enterprise">Корпоративный</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checkboxes -->
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-muted d-block mb-3">Интересы:</label>
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <div class="interest-checkbox-card">
+                                    <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                        <input type="checkbox" class="form-check-input mt-0" checked>
+                                        <span>Дизайн</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="interest-checkbox-card">
+                                    <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                        <input type="checkbox" class="form-check-input mt-0">
+                                        <span>Разработка</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="interest-checkbox-card">
+                                    <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                        <input type="checkbox" class="form-check-input mt-0" checked>
+                                        <span>Маркетинг</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="interest-checkbox-card">
+                                    <label class="d-flex align-items-center gap-2 w-100 cursor-pointer">
+                                        <input type="checkbox" class="form-check-input mt-0">
+                                        <span>Аналитика</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Select и Range -->
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Выбор категории</label>
+                            <select class="form-select form-select-lg-custom">
+                                <option selected>Выберите категорию</option>
+                                <option value="1">Категория 1</option>
+                                <option value="2">Категория 2</option>
+                                <option value="3">Категория 3</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold text-muted">Уровень: <span id="rangeValue">50</span>%</label>
+                            <input type="range" class="form-range" min="0" max="100" value="50" id="customRange">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Форма 3: Текстовые поля -->
+            <div class="card card-hover border-0 shadow-sm">
+                <div class="card-header bg-white border-bottom p-4">
+                    <h5 class="fw-bold mb-0">Текстовый ввод</h5>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Текстовая область</label>
+                        <textarea class="form-control rounded-3" rows="4" placeholder="Введите ваш текст здесь..."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold text-muted">Поиск</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control rounded-3" placeholder="Поиск...">
+                            <button class="btn btn-outline-primary rounded-3" type="button">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary-custom btn-pill w-100 py-2">Отправить данные</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ПРАВАЯ КОЛОНКА: Таблицы и графики -->
+        <div class="col-lg-6">
+            <!-- Таблица 1: Статистика пользователей -->
+            <div class="card border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-bottom p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold mb-0">Статистика пользователей</h5>
+                        <span class="badge bg-primary bg-opacity-10 text-primary">Активные</span>
+                    </div>
+                </div>
+                <div class="table-modern-container">
+                    <table class="table-modern">
+                        <thead>
+                            <tr>
+                                <th class="ps-4">Пользователь</th>
+                                <th>Роль</th>
+                                <th>Статус</th>
+                                <th class="text-end pe-4">Активность</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://ui-avatars.com/api/?name=Иван+Иванов&background=3b82f6&color=fff" 
+                                             class="table-avatar">
+                                        <span class="fw-bold">Иван Иванов</span>
+                                    </div>
+                                </td>
+                                <td>Администратор</td>
+                                <td><span class="status-pill status-success">Активен</span></td>
+                                <td class="text-end pe-4">95%</td>
+                            </tr>
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://ui-avatars.com/api/?name=Анна+Петрова&background=8b5cf6&color=fff" 
+                                             class="table-avatar">
+                                        <span class="fw-bold">Анна Петрова</span>
+                                    </div>
+                                </td>
+                                <td>Повар</td>
+                                <td><span class="status-pill status-warning">Ожидание</span></td>
+                                <td class="text-end pe-4">75%</td>
+                            </tr>
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://ui-avatars.com/api/?name=Сергей+Сидоров&background=10b981&color=fff" 
+                                             class="table-avatar">
+                                        <span class="fw-bold">Сергей Сидоров</span>
+                                    </div>
+                                </td>
+                                <td>Ученик</td>
+                                <td><span class="status-pill status-success">Активен</span></td>
+                                <td class="text-end pe-4">88%</td>
+                            </tr>
+                            <tr>
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <img src="https://ui-avatars.com/api/?name=Мария+Козлова&background=f59e0b&color=fff" 
+                                             class="table-avatar">
+                                        <span class="fw-bold">Мария Козлова</span>
+                                    </div>
+                                </td>
+                                <td>Ученик</td>
+                                <td><span class="status-pill status-pending">Неактивен</span></td>
+                                <td class="text-end pe-4">42%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- График 1: Линейный график -->
+            <div class="card card-hover border-0 shadow-sm mb-4">
+                <div class="card-header bg-white border-bottom p-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold mb-0">Активность по дням</h5>
+                        <select class="form-select form-select-sm w-auto border-0 bg-light rounded-pill">
+                            <option>За неделю</option>
+                            <option>За месяц</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-body p-4">
+                    <div style="height: 200px;">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- График 2: Круговая диаграмма -->
+            <div class="card card-hover border-0 shadow-sm">
+                <div class="card-header bg-white border-bottom p-4">
+                    <h5 class="fw-bold mb-0">Распределение по категориям</h5>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div style="height: 200px;">
+                                <canvas id="pieChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex flex-column gap-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rounded-circle" style="width: 12px; height: 12px; background-color: #3b82f6;"></div>
+                                    <span class="small">Категория A: <strong>35%</strong></span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rounded-circle" style="width: 12px; height: 12px; background-color: #8b5cf6;"></div>
+                                    <span class="small">Категория B: <strong>25%</strong></span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rounded-circle" style="width: 12px; height: 12px; background-color: #10b981;"></div>
+                                    <span class="small">Категория C: <strong>20%</strong></span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rounded-circle" style="width: 12px; height: 12px; background-color: #f59e0b;"></div>
+                                    <span class="small">Категория D: <strong>15%</strong></span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="rounded-circle" style="width: 12px; height: 12px; background-color: #ef4444;"></div>
+                                    <span class="small">Другие: <strong>5%</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Нижняя секция: Дополнительные компоненты -->
+    <div class="row mt-5 g-4">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-bottom p-4">
+                    <h5 class="fw-bold mb-0">Прогресс выполнения задач</h5>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-3">
+                                    <i class="bi bi-check-circle fs-4"></i>
+                                </div>
+                                <div>
+                                    <h3 class="fw-bold mb-0">72%</h3>
+                                    <small class="text-muted">Завершено</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-warning bg-opacity-10 text-warning p-3 rounded-3">
+                                    <i class="bi bi-clock-history fs-4"></i>
+                                </div>
+                                <div>
+                                    <h3 class="fw-bold mb-0">18%</h3>
+                                    <small class="text-muted">В процессе</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-secondary bg-opacity-10 text-secondary p-3 rounded-3">
+                                    <i class="bi bi-x-circle fs-4"></i>
+                                </div>
+                                <div>
+                                    <h3 class="fw-bold mb-0">10%</h3>
+                                    <small class="text-muted">Ожидание</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Прогресс-бары -->
+                    <div class="mt-4">
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="small fw-bold">Задача 1: Дизайн интерфейса</span>
+                                <span class="small fw-bold">85%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-primary" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="small fw-bold">Задача 2: Разработка API</span>
+                                <span class="small fw-bold">60%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-success" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="small fw-bold">Задача 3: Тестирование</span>
+                                <span class="small fw-bold">30%</span>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-warning" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Обновление значения range
+    document.getElementById('customRange').addEventListener('input', function() {
+        document.getElementById('rangeValue').textContent = this.value;
+    });
+
+    // Линейный график
+    document.addEventListener('DOMContentLoaded', function() {
+        const lineCtx = document.getElementById('lineChart').getContext('2d');
+        new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+                datasets: [{
+                    label: 'Активность',
+                    data: [65, 78, 90, 81, 86, 55, 40],
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { display: false }
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Круговая диаграмма
+        const pieCtx = document.getElementById('pieChart').getContext('2d');
+        new Chart(pieCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Категория A', 'Категория B', 'Категория C', 'Категория D', 'Другие'],
+                datasets: [{
+                    data: [35, 25, 20, 15, 5],
+                    backgroundColor: [
+                        '#3b82f6',
+                        '#8b5cf6',
+                        '#10b981',
+                        '#f59e0b',
+                        '#ef4444'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                cutout: '70%'
+            }
+        });
+    });
+</script>
+{% endblock %}
+[file content end]

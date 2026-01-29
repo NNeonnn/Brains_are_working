@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Формы и часы</title>
+    <style>
+        /* Основные стили, похожие на типичные CSS проектов */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #34495e;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+        }
+        
+        .radio-option input, .checkbox-option input {
+            width: auto;
+            margin-right: 8px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: #7f8c8d;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #616a6b;
+        }
+        
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .clocks-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .clock {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .analog-clock {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 8px solid #2c3e50;
+            position: relative;
+            margin: 0 auto 15px;
+            background-color: #f9f9f9;
+        }
+        
+        .clock-center {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #2c3e50;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        
+        .hour-hand, .minute-hand, .second-hand {
+            position: absolute;
+            transform-origin: bottom center;
+            border-radius: 4px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -100%);
+        }
+        
+        .hour-hand {
+            width: 6px;
+            height: 40px;
+            background-color: #2c3e50;
+        }
+        
+        .minute-hand {
+            width: 4px;
+            height: 55px;
+            background-color: #34495e;
+        }
+        
+        .second-hand {
+            width: 2px;
+            height: 65px;
+            background-color: #e74c3c;
+        }
+        
+        .digital-clock {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+        
+        .discrete-clock {
+            font-size: 22px;
+            color: #27ae60;
+            background-color: #e8f6ef;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .clock-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+        
+        .smooth-seconds {
+            transition: transform 0.1s linear;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .buttons-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Формы и часы</h1>
+        <p>Демонстрация различных форм и типов часов</p>
+    </header>
+    
+    <div class="container">
+        <!-- Форма 1: Вертикальная компоновка -->
+        <div class="card">
+            <h3>Форма регистрации</h3>
+            <div class="image-placeholder">
+                <div>Изображение профиля</div>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label for="name">Полное имя</label>
+                    <input type="text" id="name" placeholder="Введите ваше имя">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email адрес</label>
+                    <input type="email" id="email" placeholder="example@domain.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Пароль</label>
+                    <input type="password" id="password" placeholder="Введите пароль">
+                </div>
+                
+                <div class="form-group">
+                    <label>Выберите цвет темы</label>
+                    <input type="color" value="#3498db">
+                </div>
+                
+                <div class="buttons-group">
+                    <button type="submit">Зарегистрироваться</button>
+                    <button type="button" class="btn-secondary">Отмена</button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Форма 2: Горизонтальные группы -->
+        <div class="card">
+            <h3>Настройки профиля</h3>
+            <div class="image-placeholder">
+                <div>Фон профиля</div>
+            </div>
+            
+            <form>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="age">Возраст</label>
+                        <input type="number" id="age" min="1" max="120" value="25">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="country">Страна</label>
+                        <select id="country">
+                            <option value="ru">Россия</option>
+                            <option value="us">США</option>
+                            <option value="de">Германия</option>
+                            <option value="fr">Франция</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Пол</label>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" id="male" name="gender" checked>
+                            <label for="male">Мужской</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="female" name="gender">
+                            <label for="female">Женский</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="other" name="gender">
+                            <label for="other">Другой</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Интересы</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="sports" checked>
+                            <label for="sports">Спорт</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="music">
+                            <label for="music">Музыка</label>
+                        </div>
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="books" checked>
+                            <label for="books">Книги</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bio">О себе</label>
+                    <textarea id="bio" rows="3" placeholder="Расскажите о себе..."></textarea>
+                </div>
+                
+                <button type="submit">Сохранить настройки</button>
+            </form>
+        </div>
+        
+        <!-- Форма 3: Компактная форма -->
+        <div class="card">
+            <h3>Быстрый опрос</h3>
+            <div class="image-placeholder">
+                <div>Опросная картинка</div>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label for="rating">Оцените наш сервис (1-10)</label>
+                    <input type="range" id="rating" min="1" max="10" value="7">
+                    <div style="display: flex; justify-content: space-between; margin-top: 5px;">
+                        <span>1</span>
+                        <span>10</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Дата заполнения</label>
+                    <input type="date" id="date">
+                </div>
+                
+                <div class="form-group">
+                    <label for="time">Время заполнения</label>
+                    <input type="time" id="time">
+                </div>
+                
+                <div class="form-group">
+                    <label for="file">Загрузить файл</label>
+                    <input type="file" id="file">
+                </div>
+                
+                <div class="buttons-group">
+                    <button type="submit" class="btn-secondary">Отправить опрос</button>
+                    <button type="button" class="btn-danger">Очистить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Часы -->
+    <h2>Часы различных типов</h2>
+    <div class="clocks-container">
+        <!-- Аналоговые часы с плавным ходом -->
+        <div class="clock">
+            <div class="clock-title">Аналоговые (плавные)</div>
+            <div class="analog-clock" id="smoothAnalogClock">
+                <div class="hour-hand" id="smoothHourHand"></div>
+                <div class="minute-hand" id="smoothMinuteHand"></div>
+                <div class="second-hand smooth-seconds" id="smoothSecondHand"></div>
+                <div class="clock-center"></div>
+            </div>
+            <div class="digital-clock" id="smoothDigitalTime">--:--:--</div>
+            <p>Плавное движение стрелок</p>
+        </div>
+        
+        <!-- Аналоговые часы с дискретным ходом -->
+        <div class="clock">
+            <div class="clock-title">Аналоговые (дискретные)</div>
+            <div class="analog-clock" id="discreteAnalogClock">
+                <div class="hour-hand" id="discreteHourHand"></div>
+                <div class="minute-hand" id="discreteMinuteHand"></div>
+                <div class="second-hand" id="discreteSecondHand"></div>
+                <div class="clock-center"></div>
+            </div>
+            <div class="discrete-clock" id="discreteDigitalTime">--:--:--</div>
+            <p>Секундная стрелка двигается скачками</p>
+        </div>
+        
+        <!-- Цифровые часы с плавным обновлением -->
+        <div class="clock">
+            <div class="clock-title">Цифровые (плавные)</div>
+            <div class="digital-clock" id="digitalSmoothClock">--:--:--</div>
+            <p>Обновляется каждую секунду плавно</p>
+            <div style="margin-top: 15px;">
+                <label for="timezone">Часовой пояс:</label>
+                <select id="timezone">
+                    <option value="local">Локальное время</option>
+                    <option value="utc">UTC</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Цифровые часы с дискретным обновлением -->
+        <div class="clock">
+            <div class="clock-title">Цифровые (дискретные)</div>
+            <div class="discrete-clock" id="digitalDiscreteClock">--:--:--</div>
+            <p>Обновляется раз в 10 секунд</p>
+            <div style="margin-top: 15px;">
+                <button onclick="resetDiscreteClock()">Сбросить</button>
+            </div>
+        </div>
+        
+        <!-- Статичные часы (не обновляются) -->
+        <div class="clock">
+            <div class="clock-title">Статичные часы</div>
+            <div class="analog-clock" id="staticAnalogClock">
+                <div class="hour-hand" style="transform: translate(-50%, -100%) rotate(90deg);"></div>
+                <div class="minute-hand" style="transform: translate(-50%, -100%) rotate(180deg);"></div>
+                <div class="second-hand" style="transform: translate(-50%, -100%) rotate(270deg);"></div>
+                <div class="clock-center"></div>
+            </div>
+            <div class="digital-clock">10:30:45</div>
+            <p>Фиксированное время - не обновляется</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Демонстрационная страница с формами и часами</p>
+        <p>Создано с использованием HTML, CSS и JavaScript</p>
+    </div>
+    
+    <script>
+        // Функция для обновления плавных аналоговых часов
+        function updateSmoothAnalogClock() {
+            const now = new Date();
+            const hours = now.getHours() % 12;
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const milliseconds = now.getMilliseconds();
+            
+            // Плавное движение стрелок
+            const smoothSeconds = seconds + milliseconds / 1000;
+            const smoothMinutes = minutes + smoothSeconds / 60;
+            const smoothHours = hours + smoothMinutes / 60;
+            
+            // Углы поворота стрелок
+            const secondAngle = smoothSeconds * 6; // 360/60 = 6 градусов в секунду
+            const minuteAngle = smoothMinutes * 6; // 360/60 = 6 градусов в минуту
+            const hourAngle = smoothHours * 30; // 360/12 = 30 градусов в час
+            
+            // Применение поворота стрелок
+            document.getElementById('smoothSecondHand').style.transform = 
+                `translate(-50%, -100%) rotate(${secondAngle}deg)`;
+            document.getElementById('smoothMinuteHand').style.transform = 
+                `translate(-50%, -100%) rotate(${minuteAngle}deg)`;
+            document.getElementById('smoothHourHand').style.transform = 
+                `translate(-50%, -100%) rotate(${hourAngle}deg)`;
+                
+            // Обновление цифрового отображения
+            const timeString = now.toTimeString().split(' ')[0];
+            document.getElementById('smoothDigitalTime').textContent = timeString;
+        }
+        
+        // Функция для обновления дискретных аналоговых часов
+        function updateDiscreteAnalogClock() {
+            const now = new Date();
+            const hours = now.getHours() % 12;
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            // Углы поворота стрелок (дискретные, без учета миллисекунд)
+            const secondAngle = seconds * 6;
+            const minuteAngle = minutes * 6 + seconds * 0.1; // 6 градусов в минуту + 0.1 градуса в секунду
+            const hourAngle = hours * 30 + minutes * 0.5; // 30 градусов в час + 0.5 градуса в минуту
+            
+            // Применение поворота стрелок
+            document.getElementById('discreteSecondHand').style.transform = 
+                `translate(-50%, -100%) rotate(${secondAngle}deg)`;
+            document.getElementById('discreteMinuteHand').style.transform = 
+                `translate(-50%, -100%) rotate(${minuteAngle}deg)`;
+            document.getElementById('discreteHourHand').style.transform = 
+                `translate(-50%, -100%) rotate(${hourAngle}deg)`;
+                
+            // Обновление цифрового отображения
+            const timeString = now.toTimeString().split(' ')[0];
+            document.getElementById('discreteDigitalTime').textContent = timeString;
+        }
+        
+        // Функция для обновления плавных цифровых часов
+        function updateDigitalSmoothClock() {
+            const now = new Date();
+            const timezone = document.getElementById('timezone').value;
+            
+            let timeString;
+            if (timezone === 'utc') {
+                timeString = now.toUTCString().split(' ')[4];
+            } else {
+                timeString = now.toTimeString().split(' ')[0];
+            }
+            
+            document.getElementById('digitalSmoothClock').textContent = timeString;
+        }
+        
+        // Функция для обновления дискретных цифровых часов
+        function updateDigitalDiscreteClock() {
+            const now = new Date();
+            const timeString = now.toTimeString().split(' ')[0];
+            document.getElementById('digitalDiscreteClock').textContent = timeString;
+        }
+        
+        // Сброс дискретных часов
+        function resetDiscreteClock() {
+            const now = new Date();
+            const timeString = now.toTimeString().split(' ')[0];
+            document.getElementById('digitalDiscreteClock').textContent = timeString;
+        }
+        
+        // Инициализация всех часов
+        function initClocks() {
+            // Запуск плавных аналоговых часов (обновление каждые 50ms для плавности)
+            setInterval(updateSmoothAnalogClock, 50);
+            updateSmoothAnalogClock();
+            
+            // Запуск дискретных аналоговых часов (обновление каждую секунду)
+            setInterval(updateDiscreteAnalogClock, 1000);
+            updateDiscreteAnalogClock();
+            
+            // Запуск плавных цифровых часов (обновление каждую секунду)
+            setInterval(updateDigitalSmoothClock, 1000);
+            updateDigitalSmoothClock();
+            
+            // Запуск дискретных цифровых часов (обновление каждые 10 секунд)
+            setInterval(updateDigitalDiscreteClock, 10000);
+            updateDigitalDiscreteClock();
+            
+            // Инициализация статических часов (не обновляются)
+            // Они уже установлены в HTML
+        }
+        
+        // Запуск при загрузке страницы
+        document.addEventListener('DOMContentLoaded', initClocks);
+    </script>
+</body>
+</html>

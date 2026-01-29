@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Формы и изображения</title>
+    <style>
+        /* Базовые стили для адаптивности */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        /* Стили форм */
+        .form-section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .form-section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .form-title {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #444;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="password"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+        
+        /* Стили для radio и checkbox */
+        .option-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #4a90e2;
+        }
+        
+        /* Стили для кнопок */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: #357ae8;
+            transform: scale(1.03);
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        /* Стили для изображений */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .image-item {
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .image-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Разные размеры изображений */
+        .wide {
+            grid-column: span 2;
+        }
+        
+        .tall {
+            grid-row: span 2;
+        }
+        
+        .rounded {
+            border-radius: 20px;
+        }
+        
+        /* Стили для мобильной версии */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .image-gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .wide, .tall {
+                grid-column: span 1;
+                grid-row: span 1;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+            
+            .image-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .option-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Демонстрация форм и изображений</h1>
+        <p>Различные типы полей ввода, выборов и адаптивные изображения</p>
+    </header>
+    
+    <div class="container">
+        <!-- Форма 1: Простая контактная форма -->
+        <section class="form-section">
+            <h2 class="form-title">Контактная информация</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Полное имя</label>
+                    <input type="text" id="name" placeholder="Введите ваше имя">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email адрес</label>
+                    <input type="email" id="email" placeholder="example@domain.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Номер телефона</label>
+                    <input type="text" id="phone" placeholder="+7 (XXX) XXX-XX-XX">
+                </div>
+                
+                <div class="form-group">
+                    <label>Предпочитаемый способ связи</label>
+                    <div class="option-group">
+                        <div class="option-item">
+                            <input type="radio" id="contact-phone" name="contact" checked>
+                            <label for="contact-phone">Телефон</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="contact-email" name="contact">
+                            <label for="contact-email">Email</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="contact-telegram" name="contact">
+                            <label for="contact-telegram">Telegram</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Отправить</button>
+            </form>
+        </section>
+        
+        <!-- Форма 2: Настройки -->
+        <section class="form-section">
+            <h2 class="form-title">Персональные настройки</h2>
+            <form>
+                <div class="form-group">
+                    <label for="age">Возраст</label>
+                    <input type="number" id="age" min="0" max="120" value="25">
+                </div>
+                
+                <div class="form-group">
+                    <label for="volume">Уровень громкости</label>
+                    <input type="range" id="volume" min="0" max="100" value="50" style="width: 100%; padding: 10px 0;">
+                </div>
+                
+                <div class="form-group">
+                    <label for="color">Любимый цвет</label>
+                    <input type="color" id="color" value="#4a90e2" style="width: 100%; height: 50px; border-radius: 8px; padding: 5px;">
+                </div>
+                
+                <div class="form-group">
+                    <label>Уведомления</label>
+                    <div class="option-group">
+                        <div class="option-item">
+                            <input type="checkbox" id="notify-email" checked>
+                            <label for="notify-email">По email</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="checkbox" id="notify-push">
+                            <label for="notify-push">Push-уведомления</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="checkbox" id="notify-sms">
+                            <label for="notify-sms">SMS</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button type="button" class="btn">Сохранить</button>
+                    <button type="button" class="btn btn-secondary">Сбросить</button>
+                </div>
+            </form>
+        </section>
+        
+        <!-- Форма 3: Расширенная форма -->
+        <section class="form-section">
+            <h2 class="form-title">Расширенные параметры</h2>
+            <form>
+                <div class="form-group">
+                    <label for="category">Категория</label>
+                    <select id="category">
+                        <option value="tech">Технологии</option>
+                        <option value="art">Искусство</option>
+                        <option value="science">Наука</option>
+                        <option value="sport">Спорт</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="priority">Приоритет</label>
+                    <select id="priority" multiple style="height: 120px;">
+                        <option value="low">Низкий</option>
+                        <option value="medium" selected>Средний</option>
+                        <option value="high">Высокий</option>
+                        <option value="urgent">Срочный</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Комментарии</label>
+                    <textarea id="comments" rows="4" placeholder="Введите дополнительные комментарии..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Статус</label>
+                    <div class="option-group">
+                        <div class="option-item">
+                            <input type="radio" id="status-active" name="status" checked>
+                            <label for="status-active">Активный</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="status-pending" name="status">
+                            <label for="status-pending">В ожидании</label>
+                        </div>
+                        <div class="option-item">
+                            <input type="radio" id="status-inactive" name="status">
+                            <label for="status-inactive">Неактивный</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Применить изменения</button>
+            </form>
+        </section>
+    </div>
+    
+    <!-- Галерея изображений -->
+    <section style="margin-top: 50px;">
+        <h2 style="margin-bottom: 20px;">Галерея изображений</h2>
+        <p style="margin-bottom: 20px; color: #666;">Адаптивные изображения разных пропорций и стилей</p>
+        
+        <div class="image-gallery">
+            <!-- Простое изображение -->
+            <div class="image-item">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Горный пейзаж">
+            </div>
+            
+            <!-- Широкое изображение -->
+            <div class="image-item wide">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Широкий пейзаж">
+            </div>
+            
+            <!-- Высокое изображение -->
+            <div class="image-item tall">
+                <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b" alt="Высокий лес">
+            </div>
+            
+            <!-- Изображение со скругленными краями -->
+            <div class="image-item rounded">
+                <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19" alt="Море и скалы">
+            </div>
+            
+            <!-- Простое изображение -->
+            <div class="image-item">
+                <img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e" alt="Пустыня">
+            </div>
+            
+            <!-- Широкое изображение -->
+            <div class="image-item wide rounded">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05" alt="Туманный лес">
+            </div>
+            
+            <!-- Простое изображение -->
+            <div class="image-item">
+                <img src="https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07" alt="Лесная тропа">
+            </div>
+            
+            <!-- Высокое изображение -->
+            <div class="image-item tall">
+                <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000" alt="Горы в облаках">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Простая форма внизу страницы -->
+    <section class="form-section" style="margin-top: 50px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <h2 class="form-title">Быстрая подписка</h2>
+        <form>
+            <div class="form-group">
+                <label for="subscribe-email">Email для рассылки</label>
+                <input type="email" id="subscribe-email" placeholder="Ваш email для новостей">
+            </div>
+            
+            <div class="form-group">
+                <label>Частота рассылки</label>
+                <div class="option-group">
+                    <div class="option-item">
+                        <input type="radio" id="freq-daily" name="frequency" checked>
+                        <label for="freq-daily">Ежедневно</label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" id="freq-weekly" name="frequency">
+                        <label for="freq-weekly">Еженедельно</label>
+                    </div>
+                    <div class="option-item">
+                        <input type="radio" id="freq-monthly" name="frequency">
+                        <label for="freq-monthly">Ежемесячно</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="option-item">
+                    <input type="checkbox" id="agree-terms" checked>
+                    <label for="agree-terms">Согласен с условиями рассылки</label>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn">Подписаться</button>
+        </form>
+    </section>
+    
+    <footer style="margin-top: 50px; text-align: center; padding: 20px; color: #666; border-top: 1px solid #eee;">
+        <p>Демонстрационная страница с формами и изображениями</p>
+        <p style="margin-top: 10px; font-size: 0.9rem;">Все формы являются демонстрационными и не отправляют данные</p>
+    </footer>
+</body>
+</html>
