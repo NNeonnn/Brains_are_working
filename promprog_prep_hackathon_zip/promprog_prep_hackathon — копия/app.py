@@ -46,7 +46,6 @@ app.add_url_rule('/clear_cart', view_func=student_r.clear_cart)
 app.add_url_rule('/buy_from_cart', view_func=student_r.buy_from_cart)
 app.add_url_rule('/payment', view_func=student_r.payment, methods=['GET', 'POST'])
 #product_routes.py
-app.add_url_rule('/product/setcommentary/<id>', view_func=product_r.sendcommentary, methods=['POST'])
 app.add_url_rule('/product/<id>', view_func=product_r.product_detail, methods=['GET'])
 #povar_routes.py
 app.add_url_rule('/send_food/<id>', view_func=povar_r.sendfood)
@@ -54,7 +53,8 @@ app.add_url_rule('/update_inventory', view_func=povar_r.updateinventory, methods
 app.add_url_rule('/buy_to_admin', view_func=povar_r.buy_to_admin, methods=['POST'])
 #admin_routes.py
 app.add_url_rule('/set_admin_query', view_func=admin_r.set_admin_query, methods=['POST'])
-app.add_url_rule('/send_global', view_func=admin_r.send_global, methods=['GET', 'POST'])
+app.add_url_rule('/send_global', view_func=admin_r.send_global, methods=['GET'])
+app.add_url_rule('/send_global_file', view_func=admin_r.send_global_file, methods=['POST'])
 
 @app.errorhandler(404)
 def four04(error):

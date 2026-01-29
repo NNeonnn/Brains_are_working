@@ -39,7 +39,7 @@ def send_global_file():
         return redirect(url_for('login'), 302)
     if (request.method == 'POST'):
         data = request.form.to_dict(flat=False)
-        if (data['commit_type'][0] == 'update_photo'):
+        if (data['commit_type'][0] == 'update_global'):
             txt = request.files['global_menu']
             if (txt.filename != ''):
                 path = f"{base_path}/tovars/global_menu.txt"
