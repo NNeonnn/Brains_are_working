@@ -15,9 +15,9 @@ def get_cart_objects(email):
     cart_items = []
     total_price = 0
     for item_id in cart_ids:
-        if item_id in all_tovars:
-            item = all_tovars[item_id]
-            cart_items.append(item)
+        if item_id[0] in all_tovars:
+            item = all_tovars[item_id[0]]
+            cart_items.append([item, item_id[1]])
             try:
                 total_price += int(item['price'])
             except:
