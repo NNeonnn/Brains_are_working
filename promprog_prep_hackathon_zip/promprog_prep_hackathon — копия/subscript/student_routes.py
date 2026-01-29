@@ -70,7 +70,7 @@ def buy_from_cart():
         return redirect(url_for('login'))
     sum = 0
     for i in user['cart']:
-        sum += gettovar(int(i))['price']
+        sum += gettovar(str(i[0]))['price']
     if (sum > user['money']):
         return redirect(url_for('dashboard'))
     user['money'] -= sum
@@ -81,7 +81,7 @@ def buy_from_cart():
     tovarlist = gettovarlist()
     names = []
     for i in user['cart']:
-        names.append(tovarlist[i]['name'])
+        names.append(tovarlist[str(i[0])]['name'])
 
     # Получаем московское время с правильным форматированием
     moscow_tz = pytz.timezone('Europe/Moscow')
