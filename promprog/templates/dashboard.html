@@ -265,11 +265,6 @@
                         <a href="{{ url_for('product_detail', id=id) }}" class="text-decoration-none text-dark">
                             <div class="product-img-wrapper d-flex align-items-center justify-content-center bg-light"
                                 style="height: 180px;">
-                                {% if item.badge %}
-                                <span
-                                    class="product-badge text-white position-absolute top-0 start-0 m-3 px-2 py-1 rounded-pill small"
-                                    style="background-color: {{ item.color }};">{{ item.badge }}</span>
-                                {% endif %}
                                 <image src="{{ url_for('static', filename='images/products/' + id|string + '.png') }}"
                                     style="width: 120px;"></image>
                             </div>
