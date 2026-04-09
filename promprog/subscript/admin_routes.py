@@ -16,11 +16,11 @@ def set_admin_query():
         if (qu[i]['id'] == int(data['id'][0])):
             qu[i]['status'] = int(data['result'][0])
             if int(data['result'][0]) == 1:
-                tovars = gettovarlist()
-                for j in tovars:
-                    if (tovars[j]['name'] == qu[i]['prod']):
-                        tovars[j]['cnt'] += qu[i]['volumeint']
-                        settovarlist(tovars)
+                products = getproductlist()
+                for j in products:
+                    if (products[j]['name'] == qu[i]['prod']):
+                        products[j]['cnt'] += qu[i]['volumeint']
+                        setproductlist(products)
             break
     setquerylist(name="povar_to_admin.json", to=qu)
     return redirect(url_for('dashboard'), 302)

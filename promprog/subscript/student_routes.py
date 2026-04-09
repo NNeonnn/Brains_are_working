@@ -10,12 +10,12 @@ def get_cart_objects(email):
     if not user or 'cart' not in user:
         return [], 0
     cart_ids = user['cart']
-    all_tovars = gettovarlist()
+    all_products = getproductlist()
     cart_items = []
     total_price = 0
     for item_id in cart_ids:
-        if item_id[0] in all_tovars:
-            item = all_tovars[item_id[0]]
+        if item_id[0] in all_products:
+            item = all_products[item_id[0]]
             cart_items.append([item, item_id[1]])
             try:
                 total_price += int(item['price']) * item_id[1]
@@ -92,7 +92,7 @@ def buy_from_cart():
     sum = 0
     if (request.form.get('abon', 'False') == 'False'):
         for i in user['cart']:
-            sum += gettovar(int(i[0]))['price'] * i[1]
+            sum += getproduct(int(i[0]))['price'] * i[1]
         if (sum > user['money']):
             return redirect(url_for('dashboard'))
         user['money'] -= sum
@@ -100,13 +100,13 @@ def buy_from_cart():
     nowid = dt['total_student_queries']
     dt['total_student_queries'] += 1
     setquerylist(name="global.json", to=dt)
-    tovarlist = gettovarlist()
+    productlist = getproductlist()
     names = []
     for i in user['cart']:
         if (i[1] == 1):
-            names.append(tovarlist[i[0]]['name'])
+            names.append(productlist[i[0]]['name'])
         else:
-            names.append(f"{tovarlist[i[0]]['name']} x{i[1]}")
+            names.append(f"{productlist[i[0]]['name']} x{i[1]}")
     qu = getquerylist("student_to_povar.json")
     qu.append({
         "id": nowid,
@@ -207,9 +207,9 @@ def pay():
             break
         drinks = 0
         not_drinks = 0
-        tovarlist = gettovarlist()
+        productlist = getproductlist()
         for i in cart_objects:
-            if (tovarlist[i[0]]['category'] == 'Напитки'):
+            if (productlist[i[0]]['category'] == 'Напитки'):
                 drinks += 1
             else:
                 not_drinks += 1
@@ -218,9 +218,9 @@ def pay():
             break
     if (request.method == 'POST'):
         session['cart_date'] = request.form.to_dict(flat=False)['date'][0]
-        return render_template('pay.html', now_date=request.form.to_dict(flat=False)['date'][0], canAbonement=canAbonement, tovarlist=gettovarlist(), takequeries=getuser(email)['to_take'], **kwargs)
+        return render_template('pay.html', now_date=request.form.to_dict(flat=False)['date'][0], canAbonement=canAbonement, productlist=getproductlist(), takequeries=getuser(email)['to_take'], **kwargs)
     else:
-        return render_template('pay.html', now_date=session.get('cart_date', '2000-01-01'), canAbonement=canAbonement, tovarlist=gettovarlist(), takequeries=getuser(email)['to_take'], **kwargs)
+        return render_template('pay.html', now_date=session.get('cart_date', '2000-01-01'), canAbonement=canAbonement, productlist=getproductlist(), takequeries=getuser(email)['to_take'], **kwargs)
 
 def setabonement(id):
     email = getlogin()

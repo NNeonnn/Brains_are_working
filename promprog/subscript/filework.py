@@ -56,15 +56,15 @@ def setuser(email, changes):
     with open(users_path, 'w', encoding='utf-8') as f:
         f.write(json.dumps(changes, indent = 4))
 
-def settovar(id, to):
-    users_path = f"{base_path}/tovars/{id}.json"
+def setproduct(id, to):
+    users_path = f"{base_path}/products/{id}.json"
     with open(users_path, 'w', encoding='utf-8') as f:
         f.write(json.dumps(to, indent = 4))
 
-def gettovar(id):
-    tovars_path = f"{base_path}/tovars/{id}.json"
-    if os.path.exists(tovars_path):
-        with open(tovars_path, 'r', encoding='utf-8') as f:
+def getproduct(id):
+    products_path = f"{base_path}/products/{id}.json"
+    if os.path.exists(products_path):
+        with open(products_path, 'r', encoding='utf-8') as f:
             return json.loads(f.read())
     return False
 
@@ -74,18 +74,18 @@ def setquerylist(name, to):
         f.write(json.dumps(to, indent = 4))
 
 def getquerylist(name):
-    tovars_path = f"{base_path}/queries/{name}"
-    if os.path.exists(tovars_path):
-        with open(tovars_path, 'r', encoding='utf-8') as f:
+    products_path = f"{base_path}/queries/{name}"
+    if os.path.exists(products_path):
+        with open(products_path, 'r', encoding='utf-8') as f:
             return json.loads(f.read())
     return False
 
-def gettovarlist():
-    with open(f"{base_path}/tovars/tovars.json", 'r', encoding='utf-8') as f:
+def getproductlist():
+    with open(f"{base_path}/products/products.json", 'r', encoding='utf-8') as f:
         return json.loads(f.read())
 
-def settovarlist(to):
-    with open(f"{base_path}/tovars/tovars.json", 'w', encoding='utf-8') as f:
+def setproductlist(to):
+    with open(f"{base_path}/products/products.json", 'w', encoding='utf-8') as f:
         f.write(json.dumps(to, indent = 4))
 
 def does_user_exist(email):

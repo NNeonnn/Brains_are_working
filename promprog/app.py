@@ -82,15 +82,15 @@ def dashboard():
     email = getlogin()
     kwargs = commonkwargs(email)
     if (kwargs['rights'] == 0):
-        return render_template('dashboard.html', tovarlist=gettovarlist(), **kwargs)
+        return render_template('dashboard.html', productlist=getproductlist(), **kwargs)
     elif (kwargs['rights'] == 1):
         cart_items, cart_total = student_r.get_cart_objects(email)
         kwargs['cart_items'] = cart_items
         kwargs['cart_total'] = cart_total
-        return render_template('dashboard.html', tovarlist=gettovarlist(), takequeries=getuser(email)['to_take'], **kwargs)
+        return render_template('dashboard.html', productlist=getproductlist(), takequeries=getuser(email)['to_take'], **kwargs)
     elif (kwargs['rights'] == 2):
         return render_template('dashboard.html', **kwargs, querylist=getquerylist("student_to_povar.json"),\
-                                                           productlist=gettovarlist(),
+                                                           productlist=getproductlist(),
                                                            toadmin=getquerylist("povar_to_admin.json"))
     elif (kwargs['rights'] == 3):
         balance_q = getquerylist('payment.json')
